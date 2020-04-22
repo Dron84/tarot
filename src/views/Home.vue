@@ -1,19 +1,19 @@
 <template>
   <div id="app" class="container">
     <div class="wrap">
-      <h2>Введите дату рождения</h2>
+      <h2>Дату рождения</h2>
       <div class="flex">
         <div class="input_group">
           <span>День</span>
-          <input type="number" :min="1" :max="31" ref="days" @change="inputCheck($event,'days')">
+          <input type="number" :min="1" :max="31" ref="onedays" @change="inputCheck($event,'onedays')">
         </div>
         <div class="input_group">
           <span>Месяц</span>
-          <input type="number" :min="1" :max="12" ref="mounth" @change="inputCheck($event,'mounth')">
+          <input type="number" :min="1" :max="12" ref="onemounth" @change="inputCheck($event,'onemounth')">
         </div>
         <div class="input_group">
           <span>Год</span>
-          <input type="number" :min="1900" :max="2030" ref="year" @change="inputCheck($event,'year')">
+          <input type="number" :min="1900" :max="2030" ref="oneyear" @change="inputCheck($event,'oneyear')">
         </div>
       </div>
       <button @click="calculate">Подсчитать</button>
@@ -36,11 +36,10 @@
         }),
         methods: {
             inputCheck(e,target){
-                console.log(this.$refs[target])
-                if(e.target.value<e.target.min){
-                    this.$refs[target].value = e.target.min
-                }else if(e.target.value>e.target.max){
-                    this.$refs[target].value = e.target.max
+                if (Number(e.target.value) < Number(e.target.min)) {
+                    this.$refs[target].value = Number(e.target.min)
+                } else if (Number(e.target.value) > Number(e.target.max) ) {
+                    this.$refs[target].value = Number(e.target.max)
                 }
             },
             check(num){
@@ -64,13 +63,13 @@
                 return this.$store.getters.tarot[num-1]
             },
             first(){
-                return Number(this.check(this.$refs.days.value))
+                return Number(this.check(this.$refs.onedays.value))
             },
             two(){
-                return Number(this.$refs.mounth.value)
+                return Number(this.$refs.onemounth.value)
             },
             three(){
-                const d = this.$refs.year.value
+                const d = this.$refs.oneyear.value
                 let sum = Number(d[0])+Number(d[1])+Number(d[2])+Number(d[3])
                 return Number(this.check(sum))
             },

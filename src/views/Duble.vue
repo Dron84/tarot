@@ -1,55 +1,66 @@
 <template>
-  <div id="app" class="container">
-    <div class="wrap">
-      <div class="flex">
-        <div style="margin: 0 10px;">
-          <h2>Введите дату рождения 1го человека</h2>
-          <div class="grid">
-            <div class="input_group">
-              <span>День</span>
-              <input type="number" :min="1" :max="31" ref="days" @change="inputCheck($event,'days')">
-            </div>
-            <div class="input_group">
-              <span>Месяц</span>
-              <input type="number" :min="1" :max="12" ref="mounth" @change="inputCheck($event,'mounth')">
-            </div>
-            <div class="input_group">
-              <span>Год</span>
-              <input type="number" :min="1900" :max="2030" ref="year" @change="inputCheck($event,'year')">
-            </div>
-          </div>
-        </div>
+    <div id="app" class="container">
+        <div class="wrap">
+            <div class="flex">
+                <div style="margin: 0 10px;">
+                    <h2>Датa рождения 1го</h2>
+                    <div class="grid">
+                        <div class="input_group">
+                            <span>День</span>
+                            <input type="number" :min="1" :max="31" ref="days" @change="inputCheck($event,'days')">
+                        </div>
+                        <div class="input_group">
+                            <span>Месяц</span>
+                            <input type="number" :min="1" :max="12" ref="mounth" @change="inputCheck($event,'mounth')">
+                        </div>
+                        <div class="input_group">
+                            <span>Год</span>
+                            <input type="number" :min="1900" :max="2030" ref="year" @change="inputCheck($event,'year')">
+                        </div>
+                    </div>
+                </div>
 
-        <div style="margin: 0 10px;">
-          <h2>Введите дату рождения 2го человека</h2>
-          <div class="grid">
-            <div class="input_group">
-              <span>День</span>
-              <input type="number" :min="1" :max="31" ref="days2" @change="inputCheck($event,'days2')">
+                <div style="margin: 0 10px;">
+                    <h2>Дату рождения 2го</h2>
+                    <div class="grid">
+                        <div class="input_group">
+                            <span>День</span>
+                            <input type="number" :min="1" :max="31" ref="days2" @change="inputCheck($event,'days2')">
+                        </div>
+                        <div class="input_group">
+                            <span>Месяц</span>
+                            <input type="number" :min="1" :max="12" ref="mounth2" @change="inputCheck($event,'mounth2')">
+                        </div>
+                        <div class="input_group">
+                            <span>Год</span>
+                            <input type="number" :min="1900" :max="2030" ref="year2" @change="inputCheck($event,'year2')">
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="input_group">
-              <span>Месяц</span>
-              <input type="number" :min="1" :max="12" ref="mounth2"
-                     @change="inputCheck($event,'mounth2')">
-            </div>
-            <div class="input_group">
-              <span>Год</span>
-              <input type="number" :min="1900" :max="2030" ref="year2"
-                     @change="inputCheck($event,'year2')">
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <button @click="calculate">Подсчитать</button>
-      <span class="onHover" @click="short =! short">Полный портрет</span>
+            <button @click="calculate">Подсчитать</button>
+            <span class="onHover" @click="short =! short">Полный портрет</span>
+        </div>
+        <div class="horScroller">
+            <transition name="fade">
+                <div class="dubleMaps" v-if="map!==null&&map2!==null&&dubleMap!==null">
+                    <div class="border">
+                        <h3>1 человек</h3>
+                        <tarotMaps :maps="map" :short="short"/>
+                    </div>
+                    <div class="border">
+                        <h3>2 человек</h3>
+                        <tarotMaps :maps="map2" :short="short"/>
+                    </div>
+                    <div class="border">
+                        <h3>Парный портрет</h3>
+                        <tarotMaps :maps="dubleMap" :short="short"/>
+                    </div>
+                </div>
+            </transition>
+        </div>
     </div>
-    <transition name="fade">
-      <tarotMaps :maps="map" v-if="map!==null" :short="short"/>
-      <tarotMaps :maps="map2" v-if="map2!==null" :short="short"/>
-    </transition>
-
-  </div>
 </template>
 
 <script>
@@ -61,61 +72,61 @@
         data: () => ({
             map: null,
             map2: null,
+            dubleMap: null,
             short: true
         }),
         methods: {
             inputCheck(e, target) {
-                if (e.target.value < e.target.min) {
-                    this.$refs[target].value = e.target.min
-                } else if (e.target.value > e.target.max) {
-                    this.$refs[target].value = e.target.max
+                if (Number(e.target.value) < Number(e.target.min)) {
+                    this.$refs[target].value = Number(e.target.min)
+                } else if (Number(e.target.value) > Number(e.target.max) ) {
+                    this.$refs[target].value = Number(e.target.max)
                 }
             },
             check(num) {
                 const c = (n) => {
-                    if (n > 22) {
-                        while (n > 22) {
-                            n = n - 22
+                    if (Number(n) > 22) {
+                        while (Number(n) > 22) {
+                            n = Number(n) - 22
                         }
                         return Number(n)
                     } else if (n > 0 && n <= 22) {
                         return Number(n)
                     }
                 }
-                if (num > 0) {
-                    return c(num)
-                } else if (num < 0) {
-                    return c(num * -1)
+                if (Number(num) > 0) {
+                    return c(Number(num))
+                } else if (Number(num) < 0) {
+                    return c(Number(num) * -1)
                 }
             },
             getTarot(num) {
                 return this.$store.getters.tarot[num - 1]
             },
-            first() {
-                return Number(this.check(this.$refs.days.value))
+            first(days, mounth, year) {
+                return this.check(Number(days))
             },
-            two() {
-                return Number(this.$refs.mounth.value)
+            two(days, mounth, year) {
+                return Number(mounth)
             },
-            three() {
-                const d = this.$refs.year.value
-                let sum = Number(d[0]) + Number(d[1]) + Number(d[2]) + Number(d[3])
+            three(days, mounth, year) {
+                let sum = Number(year[0]) + Number(year[1]) + Number(year[2]) + Number(year[3])
                 return Number(this.check(sum))
             },
-            fore() {
-                return this.check(this.first() + this.two())
+            fore(days, mounth, year) {
+                return this.check(this.first(days, mounth, year) + this.two(days, mounth, year))
             },
-            five() {
-                return this.check(this.two() + this.three())
+            five(days, mounth, year) {
+                return this.check(this.two(days, mounth, year) + this.three(days, mounth, year))
             },
-            sixs() {
-                return this.check(this.fore() + this.five())
+            sixs(days, mounth, year) {
+                return this.check(this.fore(days, mounth, year) + this.five(days, mounth, year))
             },
-            seven() {
-                return this.check(this.first() + this.five())
+            seven(days, mounth, year) {
+                return this.check(this.first(days, mounth, year) + this.five(days, mounth, year))
             },
-            ethe() {
-                return this.check(this.two() + this.sixs())
+            ethe(days, mounth, year) {
+                return this.check(this.two(days, mounth, year) + this.sixs(days, mounth, year))
             },
             MinMax(first, second) {
                 if (first > second) {
@@ -126,81 +137,142 @@
                     return this.check(22)
                 }
             },
-            nine() {
-                return this.MinMax(this.first(), this.two())
+            nine(days, mounth, year) {
+                return this.MinMax(this.first(days, mounth, year), this.two(days, mounth, year))
             },
-            ten() {
-                return this.MinMax(this.three(), this.two())
+            ten(days, mounth, year) {
+                return this.MinMax(this.three(days, mounth, year), this.two(days, mounth, year))
             },
-            ileven() {
-                return this.MinMax(this.nine(), this.ten())
+            ileven(days, mounth, year) {
+                return this.MinMax(this.nine(days, mounth, year), this.ten(days, mounth, year))
             },
-            tvelf() {
-                return this.check(this.seven() + this.ethe())
+            tvelf(days, mounth, year) {
+                return this.check(this.seven(days, mounth, year) + this.ethe(days, mounth, year))
             },
-            therten() {
-                return this.check(this.first() + this.fore() + this.sixs())
+            therten(days, mounth, year) {
+                return this.check(this.first(days, mounth, year) + this.fore(days, mounth, year) + this.sixs(days, mounth, year))
             },
-            foreten() {
-                return this.check(this.three() + this.five() + this.sixs())
+            foreten(days, mounth, year) {
+                return this.check(this.three(days, mounth, year) + this.five(days, mounth, year) + this.sixs(days, mounth, year))
             },
-            fiften() {
-                return this.check(this.nine() + this.ten() + this.ileven() - this.seven())
+            fiften(days, mounth, year) {
+                return this.check(this.nine(days, mounth, year) + this.ten(days, mounth, year) + this.ileven(days, mounth, year) - this.seven(days, mounth, year))
             },
-            sixten() {
-                return this.check((this.first() + this.fore()) + (this.five() + this.three()))
+            sixten(days, mounth, year) {
+                return this.check((this.first(days, mounth, year) + this.fore(days, mounth, year)) + (this.five(days, mounth, year) + this.three(days, mounth, year)))
             },
-            seventen() {
-                return this.check(this.ileven() + this.sixs())
+            seventen(days, mounth, year) {
+                return this.check(this.ileven(days, mounth, year) + this.sixs(days, mounth, year))
             },
-            eten() {
-                return this.check(this.ileven() + this.ethe())
+            eten(days, mounth, year) {
+                return this.check(this.ileven(days, mounth, year) + this.ethe(days, mounth, year))
             },
-            A() {
-                return this.check(this.first() + this.fore())
+            A(days, mounth, year) {
+                return this.check(this.first(days, mounth, year) + this.fore(days, mounth, year))
             },
-            B() {
-                return this.check(this.two() + this.fore())
+            B(days, mounth, year) {
+                return this.check(this.two(days, mounth, year) + this.fore(days, mounth, year))
             },
-            C() {
-                return this.check(this.two() + this.five())
+            C(days, mounth, year) {
+                return this.check(this.two(days, mounth, year) + this.five(days, mounth, year))
             },
-            D() {
-                return this.check(this.three() + this.five())
+            D(days, mounth, year) {
+                return this.check(this.three(days, mounth, year) + this.five(days, mounth, year))
             },
-            E() {
-                return this.check(this.fore() + this.sixs())
+            E(days, mounth, year) {
+                return this.check(this.fore(days, mounth, year) + this.sixs(days, mounth, year))
             },
-            F() {
-                return this.check(this.five() + this.sixs())
+            F(days, mounth, year) {
+                return this.check(this.five(days, mounth, year) + this.sixs(days, mounth, year))
             },
             calculate() {
-                // console.log('date', this.dd, this.mm, this.yyyy)
+                const days = this.$refs.days.value
+                const mounth = this.$refs.mounth.value
+                const year = this.$refs.year.value
+
                 this.map = {
-                    one: this.getTarot(this.first()),
-                    two: this.getTarot(this.two()),
-                    three: this.getTarot(this.three()),
-                    fore: this.getTarot(this.fore()),
-                    five: this.getTarot(this.five()),
-                    sixs: this.getTarot(this.sixs()),
-                    seven: this.getTarot(this.seven()),
-                    ethe: this.getTarot(this.ethe()),
-                    nine: this.getTarot(this.nine()),
-                    ten: this.getTarot(this.ten()),
-                    ileven: this.getTarot(this.ileven()),
-                    tvelf: this.getTarot(this.tvelf()),
-                    therten: this.getTarot(this.therten()),
-                    foreten: this.getTarot(this.foreten()),
-                    fiften: this.getTarot(this.fiften()),
-                    sixten: this.getTarot(this.sixten()),
-                    seventen: this.getTarot(this.seventen()),
-                    eten: this.getTarot(this.eten()),
-                    A: this.getTarot(this.A()),
-                    B: this.getTarot(this.B()),
-                    C: this.getTarot(this.C()),
-                    D: this.getTarot(this.D()),
-                    E: this.getTarot(this.E()),
-                    F: this.getTarot(this.F()),
+                    one: this.getTarot(this.first(days, mounth, year)),
+                    two: this.getTarot(this.two(days, mounth, year)),
+                    three: this.getTarot(this.three(days, mounth, year)),
+                    fore: this.getTarot(this.fore(days, mounth, year)),
+                    five: this.getTarot(this.five(days, mounth, year)),
+                    sixs: this.getTarot(this.sixs(days, mounth, year)),
+                    seven: this.getTarot(this.seven(days, mounth, year)),
+                    ethe: this.getTarot(this.ethe(days, mounth, year)),
+                    nine: this.getTarot(this.nine(days, mounth, year)),
+                    ten: this.getTarot(this.ten(days, mounth, year)),
+                    ileven: this.getTarot(this.ileven(days, mounth, year)),
+                    tvelf: this.getTarot(this.tvelf(days, mounth, year)),
+                    therten: this.getTarot(this.therten(days, mounth, year)),
+                    foreten: this.getTarot(this.foreten(days, mounth, year)),
+                    fiften: this.getTarot(this.fiften(days, mounth, year)),
+                    sixten: this.getTarot(this.sixten(days, mounth, year)),
+                    seventen: this.getTarot(this.seventen(days, mounth, year)),
+                    eten: this.getTarot(this.eten(days, mounth, year)),
+                    A: this.getTarot(this.A(days, mounth, year)),
+                    B: this.getTarot(this.B(days, mounth, year)),
+                    C: this.getTarot(this.C(days, mounth, year)),
+                    D: this.getTarot(this.D(days, mounth, year)),
+                    E: this.getTarot(this.E(days, mounth, year)),
+                    F: this.getTarot(this.F(days, mounth, year)),
+                }
+
+                const days2 = this.$refs.days2.value
+                const mounth2 = this.$refs.mounth2.value
+                const year2 = this.$refs.year2.value
+
+                this.map2 = {
+                    one: this.getTarot(this.first(days2, mounth2, year2)),
+                    two: this.getTarot(this.two(days2, mounth2, year2)),
+                    three: this.getTarot(this.three(days2, mounth2, year2)),
+                    fore: this.getTarot(this.fore(days2, mounth2, year2)),
+                    five: this.getTarot(this.five(days2, mounth2, year2)),
+                    sixs: this.getTarot(this.sixs(days2, mounth2, year2)),
+                    seven: this.getTarot(this.seven(days2, mounth2, year2)),
+                    ethe: this.getTarot(this.ethe(days2, mounth2, year2)),
+                    nine: this.getTarot(this.nine(days2, mounth2, year2)),
+                    ten: this.getTarot(this.ten(days2, mounth2, year2)),
+                    ileven: this.getTarot(this.ileven(days2, mounth2, year2)),
+                    tvelf: this.getTarot(this.tvelf(days2, mounth2, year2)),
+                    therten: this.getTarot(this.therten(days2, mounth2, year2)),
+                    foreten: this.getTarot(this.foreten(days2, mounth2, year2)),
+                    fiften: this.getTarot(this.fiften(days2, mounth2, year2)),
+                    sixten: this.getTarot(this.sixten(days2, mounth2, year2)),
+                    seventen: this.getTarot(this.seventen(days2, mounth2, year2)),
+                    eten: this.getTarot(this.eten(days2, mounth2, year2)),
+                    A: this.getTarot(this.A(days2, mounth2, year2)),
+                    B: this.getTarot(this.B(days2, mounth2, year2)),
+                    C: this.getTarot(this.C(days2, mounth2, year2)),
+                    D: this.getTarot(this.D(days2, mounth2, year2)),
+                    E: this.getTarot(this.E(days2, mounth2, year2)),
+                    F: this.getTarot(this.F(days2, mounth2, year2)),
+                }
+
+                this.dubleMap = {
+                    one: this.getTarot(this.check(this.first(days, mounth, year) + this.first(days2, mounth2, year2))),
+                    two: this.getTarot(this.check(this.two(days,mounth, year) + this.two(days2, mounth2, year2))),
+                    three: this.getTarot(this.check(this.three(days,mounth, year) + this.three(days2, mounth2, year2))),
+                    fore: this.getTarot(this.check(this.fore(days,mounth, year) + this.fore(days2, mounth2, year2))),
+                    five: this.getTarot(this.check(this.five(days,mounth, year) + this.five(days2, mounth2, year2))),
+                    sixs: this.getTarot(this.check(this.sixs(days,mounth, year) + this.sixs(days2, mounth2, year2))),
+                    seven: this.getTarot(this.check(this.seven(days,mounth, year) + this.seven(days2, mounth2, year2))),
+                    ethe: this.getTarot(this.check(this.ethe(days,mounth, year) + this.ethe(days2, mounth2, year2))),
+                    nine: this.getTarot(this.check(this.nine(days,mounth, year) + this.nine(days2, mounth2, year2))),
+                    ten: this.getTarot(this.check(this.ten(days,mounth, year) + this.ten(days2, mounth2, year2))),
+                    ileven: this.getTarot(this.check(this.ileven(days,mounth, year) + this.ileven(days2, mounth2, year2))),
+                    tvelf: this.getTarot(this.check(this.tvelf(days,mounth, year) + this.tvelf(days2, mounth2, year2))),
+                    therten: this.getTarot(this.check(this.therten(days,mounth, year) + this.therten(days2, mounth2, year2))),
+                    foreten: this.getTarot(this.check(this.foreten(days,mounth, year) + this.foreten(days2, mounth2, year2))),
+                    fiften: this.getTarot(this.check(this.fiften(days,mounth, year) + this.fiften(days2, mounth2, year2))),
+                    sixten: this.getTarot(this.check(this.sixten(days,mounth, year) + this.sixten(days2, mounth2, year2))),
+                    seventen: this.getTarot(this.check(this.seventen(days,mounth, year) + this.seventen(days2, mounth2, year2))),
+                    eten: this.getTarot(this.check(this.eten(days,mounth, year) + this.eten(days2, mounth2, year2))),
+                    A: this.getTarot(this.check(this.A(days,mounth, year) + this.A(days2, mounth2, year2))),
+                    B: this.getTarot(this.check(this.B(days,mounth, year) + this.B(days2, mounth2, year2))),
+                    C: this.getTarot(this.check(this.C(days,mounth, year) + this.C(days2, mounth2, year2))),
+                    D: this.getTarot(this.check(this.D(days,mounth, year) + this.D(days2, mounth2, year2))),
+                    E: this.getTarot(this.check(this.E(days,mounth, year) + this.E(days2, mounth2, year2))),
+                    F: this.getTarot(this.check(this.F(days,mounth, year) + this.F(days2, mounth2, year2))),
                 }
             },
         },
@@ -208,69 +280,96 @@
 </script>
 
 <style scoped lang="sass">
-  @import '../sass/vars'
-  *
-    margin: 0
-    padding: 0
-    box-sizing: border-box
+    @import '../sass/vars'
+    *
+        margin: 0
+        padding: 0
+        box-sizing: border-box
 
-  html
-    background-color: $first
-  .onHover
-    cursor: pointer
-  button
-    border: 1px solid transparent
-    margin: 10px 0
-    border-radius: 5px
-    background-color: $fore
-    color: $first
-    height: 40px
-    min-width: 220px
-    outline: $fore
-    &:disabled
-      background-color: $second
-      color: $five
-      &:hover
-        background-color: $second
-        color: $five
-        cursor: not-allowed
+    html
+        background-color: $first
+
+    .onHover
+        cursor: pointer
+
+    .border
+        border-radius: 5px
+        border: 1px solid $five
+
+    button
         border: 1px solid transparent
-    &:hover
-      background-color: $first
-      color: $fore
-      border: 1px solid $fore
-      cursor: pointer
+        margin: 10px 0
+        border-radius: 5px
+        background-color: $fore
+        color: $first
+        height: 40px
+        min-width: 220px
+        outline: $fore
+        &:disabled
+            background-color: $second
+            color: $five
+            &:hover
+                background-color: $second
+                color: $five
+                cursor: not-allowed
+                border: 1px solid transparent
+        &:hover
+            background-color: $first
+            color: $fore
+            border: 1px solid $fore
+            cursor: pointer
 
-  .grid
-    display: grid
-    grid-template-columns: repeat(3, minmax(60px, 1fr))
-    grid-gap: 10px
-  .flex
-    display: flex
+    .horScroller
+        width: 100vw
+        overflow-x: scroll
 
-  #app
-    h2
-      color: $fore
-    .wrap
-      display: grid
-      justify-content: center
-      align-items: center
+    .grid
+        display: grid
+        grid-template-columns: repeat(3, minmax(60px, 1fr))
+        grid-gap: 10px
 
-  .input_group
-    span
-      display: block
-    input
-      height: 40px
-      max-width: 100px
-      font-size: 20px
-      text-align: center
-      border-radius: 5px
-      border: 1px solid $five
+    .flex
+        display: flex
+        flex-wrap: wrap
+        justify-content: center
 
-  .fade-enter-active, .fade-leave-active
-    transition: opacity .5s
+    #app
+        h2
+            color: $fore
+        .wrap
+            display: grid
+            justify-content: center
+            align-items: center
 
-  .fade-enter, .fade-leave-to
-    opacity: 0
+    .input_group
+        span
+            display: block
+        input
+            height: 40px
+            width: 100px
+            font-size: 20px
+            text-align: center
+            border-radius: 5px
+            border: 1px solid $five
+
+    .dubleMaps
+        display: grid
+        grid-template-columns: repeat(2, minmax(50px, 1fr))
+        grid-template-areas: "firstmap secondmap" "dublemap dublemap"
+        grid-gap: 20px
+        overflow-x: scroll
+        min-width: 600px
+        div:nth-child(1)
+            grid-area: firstmap
+        div:nth-child(2)
+            grid-area: secondmap
+        div:nth-child(3)
+            grid-area: dublemap
+
+    .fade-enter-active, .fade-leave-active
+        transition: opacity .5s
+
+    .fade-enter, .fade-leave-to
+        opacity: 0
 
 </style>
