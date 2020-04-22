@@ -140,5 +140,5 @@
             grid-area: F
     @media (max-width: 800px)
         .maps
-            grid-gap: 0
+            grid-gap: 10px
 </style>
