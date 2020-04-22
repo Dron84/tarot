@@ -3,7 +3,7 @@
         <div class="wrap">
             <div class="flex">
                 <div style="margin: 0 10px;">
-                    <h2>Датa рождения 1го</h2>
+                    <h2>Введите дату рождения 1го</h2>
                     <div class="grid">
                         <div class="input_group">
                             <span>День</span>
@@ -21,7 +21,7 @@
                 </div>
 
                 <div style="margin: 0 10px;">
-                    <h2>Дату рождения 2го</h2>
+                    <h2>Введите дату рождения 2го</h2>
                     <div class="grid">
                         <div class="input_group">
                             <span>День</span>
