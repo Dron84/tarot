@@ -16,7 +16,7 @@
           <input type="number" :min="1900" :max="2030" ref="oneyear" @change="inputCheck($event,'oneyear')">
         </div>
       </div>
-      <button @click="calculate">Подсчитать</button>
+      <button @click="calculate">Рассчитать</button>
     </div>
     <transition name="fade">
       <tarotMaps :maps="map" v-if="map!==null"/>

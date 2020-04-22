@@ -39,7 +39,7 @@
                 </div>
             </div>
 
-            <button @click="calculate">Подсчитать</button>
+            <button @click="calculate">Рассчитать</button>
             <span class="onHover" @click="short =! short">Полный портрет</span>
         </div>
         <div class="horScroller">
