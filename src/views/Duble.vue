@@ -40,7 +40,7 @@
             </div>
 
             <button @click="calculate">Рассчитать</button>
-            <span class="onHover" @click="short =! short">Полный портрет</span>
+            <span class="onHover" @click="short =! short">{{shortText()}}</span>
         </div>
         <div class="horScroller">
             <transition name="fade">
@@ -76,6 +76,13 @@
             short: true
         }),
         methods: {
+            shortText(){
+              if(this.short){
+                  return 'Полный портрет'
+              }else{
+                  return 'Сокращенный портрет'
+              }
+            },
             inputCheck(e, target) {
                 if (Number(e.target.value) < Number(e.target.min)) {
                     this.$refs[target].value = Number(e.target.min)
