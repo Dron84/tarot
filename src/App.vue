@@ -37,6 +37,9 @@
 
   #nav
     padding: 30px
+    display: grid
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr) )
+    justify-content: center
     a
       font-weight: bold
       color: $fore
