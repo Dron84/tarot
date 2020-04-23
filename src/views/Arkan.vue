@@ -6,18 +6,20 @@
                     <h2>Введите дату рождения</h2>
                     <div class="grid">
                         <div class="input_group">
-                            <span>День</span>
-                            <input type="number" :min="1" :max="31" ref="bday" @change="inputCheck($event,'bday')"
+                            <span>День*</span>
+                            <input type="number" :min="1" :max="31" ref="bday" placeholder="XX"
+                                   @change="inputCheck($event,'bday')"
                                    @keyup.enter="calculate">
                         </div>
                         <div class="input_group">
-                            <span>Месяц</span>
-                            <input type="number" :min="1" :max="12" ref="bmounth" @change="inputCheck($event,'bmounth')"
+                            <span>Месяц*</span>
+                            <input type="number" :min="1" :max="12" ref="bmounth" placeholder="XX"
+                                   @change="inputCheck($event,'bmounth')"
                                    @keyup.enter="calculate">
                         </div>
                         <div class="input_group">
-                            <span>Год</span>
-                            <input type="number" :min="1900" :max="2030" ref="byear"
+                            <span>Год*</span>
+                            <input type="number" :min="1900" :max="2030" ref="byear" placeholder="XXXX"
                                    @change="inputCheck($event,'byear')" @keyup.enter="calculate">
                         </div>
                     </div>
@@ -28,12 +30,12 @@
                     <div class="grid">
                         <div class="input_group">
                             <span>Месяц</span>
-                            <input type="number" :min="0" :max="12" ref="arkanmounth"
+                            <input type="number" :min="0" :max="12" ref="arkanmounth" placeholder="XX"
                                    @change="inputCheck($event,'arkanmounth')" @keyup.enter="calculate">
                         </div>
                         <div class="input_group">
-                            <span>Год</span>
-                            <input type="number" :min="1900" :max="2030" ref="arkanyear"
+                            <span>Год*</span>
+                            <input type="number" :min="1900" :max="2030" ref="arkanyear" placeholder="XXXX"
                                    @change="inputCheck($event,'arkanyear')" @keyup.enter="calculate">
                         </div>
                     </div>
@@ -48,7 +50,7 @@
 
             <transition name="fade">
                 <div class="simple_grid">
-                <tarotMaps :maps="map" v-if="map!==null" :short="short" :showCard="cards"/>
+                    <tarotMaps :maps="map" v-if="map!==null" :short="short" :showCard="cards"/>
                 </div>
             </transition>
         </div>

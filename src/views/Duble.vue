@@ -6,16 +6,19 @@
                     <h2>Введите дату рождения 1го</h2>
                     <div class="grid">
                         <div class="input_group">
-                            <span>День</span>
-                            <input type="number" :min="1" :max="31" ref="days" @change="inputCheck($event,'days')">
+                            <span>День*</span>
+                            <input type="number" :min="1" :max="31" ref="days" @change="inputCheck($event,'days')"
+                                   placeholder="XX">
                         </div>
                         <div class="input_group">
-                            <span>Месяц</span>
-                            <input type="number" :min="1" :max="12" ref="mounth" @change="inputCheck($event,'mounth')">
+                            <span>Месяц*</span>
+                            <input type="number" :min="1" :max="12" ref="mounth" @change="inputCheck($event,'mounth')"
+                                   placeholder="XX">
                         </div>
                         <div class="input_group">
-                            <span>Год</span>
-                            <input type="number" :min="1900" :max="2030" ref="year" @change="inputCheck($event,'year')">
+                            <span>Год*</span>
+                            <input type="number" :min="1900" :max="2030" ref="year" @change="inputCheck($event,'year')"
+                                   placeholder="XXXX">
                         </div>
                     </div>
                 </div>
@@ -24,17 +27,18 @@
                     <h2>Введите дату рождения 2го</h2>
                     <div class="grid">
                         <div class="input_group">
-                            <span>День</span>
-                            <input type="number" :min="1" :max="31" ref="days2" @change="inputCheck($event,'days2')">
+                            <span>День*</span>
+                            <input type="number" :min="1" :max="31" ref="days2" placeholder="XX"
+                                   @change="inputCheck($event,'days2')">
                         </div>
                         <div class="input_group">
-                            <span>Месяц</span>
-                            <input type="number" :min="1" :max="12" ref="mounth2"
+                            <span>Месяц*</span>
+                            <input type="number" :min="1" :max="12" ref="mounth2" placeholder="XX"
                                    @change="inputCheck($event,'mounth2')">
                         </div>
                         <div class="input_group">
-                            <span>Год</span>
-                            <input type="number" :min="1900" :max="2030" ref="year2"
+                            <span>Год*</span>
+                            <input type="number" :min="1900" :max="2030" ref="year2" placeholder="XXXX"
                                    @change="inputCheck($event,'year2')">
                         </div>
                     </div>

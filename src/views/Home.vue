@@ -1,191 +1,196 @@
 <template>
-  <div id="app" class="container">
-    <div class="wrap">
-      <h2>Введите дату рождения</h2>
-      <div class="grid">
-        <div class="input_group">
-          <span>День</span>
-          <input type="number" :min="1" :max="31" ref="onedays" @change="inputCheck($event,'onedays')">
-        </div>
-        <div class="input_group">
-          <span>Месяц</span>
-          <input type="number" :min="1" :max="12" ref="onemounth" @change="inputCheck($event,'onemounth')">
-        </div>
-        <div class="input_group">
-          <span>Год</span>
-          <input type="number" :min="1900" :max="2030" ref="oneyear" @change="inputCheck($event,'oneyear')">
-        </div>
-      </div>
-      <button @click="calculate">Рассчитать</button>
-      <div class="simple_grid">
-        <span class="onHover" @click="short =! short">{{shortText()}}</span>
-        <checkbox name="cards" value="1" v-model="cards" checked> Карты</checkbox>
-      </div>
+    <div id="app" class="container">
+        <div class="wrap">
+            <h2>Введите дату рождения</h2>
+            <div class="grid">
+                <div class="input_group">
+                    <span>День*</span>
+                    <input type="number" :min="1" :max="31" ref="onedays" @change="inputCheck($event,'onedays')"
+                           placeholder="XX">
+                </div>
+                <div class="input_group">
+                    <span>Месяц*</span>
+                    <input type="number" :min="1" :max="12" ref="onemounth" @change="inputCheck($event,'onemounth')"
+                           placeholder="XX">
+                </div>
+                <div class="input_group">
+                    <span>Год*</span>
+                    <input type="number" :min="1900" :max="2030" ref="oneyear" @change="inputCheck($event,'oneyear')"
+                           placeholder="XXXX">
+                </div>
 
-      <transition name="fade">
-        <tarotMaps :maps="map" v-if="map!==null" :short="short" :showCard="cards"/>
-      </transition>
+            </div>
+            <button @click="calculate">Рассчитать</button>
+            <div class="simple_grid">
+                <span class="onHover" @click="short =! short">{{shortText()}}</span>
+                <checkbox name="cards" value="1" v-model="cards" checked> Карты</checkbox>
+            </div>
 
+            <transition name="fade">
+                <tarotMaps :maps="map" v-if="map!==null" :short="short" :showCard="cards"/>
+            </transition>
+
+        </div>
     </div>
-  </div>
 </template>
 
 <script>
     import tarotMaps from '../components/map'
     import {Checkbox} from 'vue-checkbox-radio';
+
     export default {
         name: 'App',
-        components: {tarotMaps,Checkbox},
+        components: {tarotMaps, Checkbox},
         data: () => ({
             map: null,
             short: false,
             cards: false,
         }),
         methods: {
-            shortText(){
-                if(this.short){
+            shortText() {
+                if (this.short) {
                     return 'Полный портрет'
-                }else{
+                } else {
                     return 'Сокращенный портрет'
                 }
             },
-            inputCheck(e,target){
+            inputCheck(e, target) {
                 if (Number(e.target.value) < Number(e.target.min)) {
                     this.$refs[target].value = Number(e.target.min)
-                } else if (Number(e.target.value) > Number(e.target.max) ) {
+                } else if (Number(e.target.value) > Number(e.target.max)) {
                     this.$refs[target].value = Number(e.target.max)
                 }
             },
-            check(num){
-                const c = (n)=>{
-                    if(n>22){
-                        while (n > 22){
+            check(num) {
+                const c = (n) => {
+                    if (n > 22) {
+                        while (n > 22) {
                             n = n - 22
                         }
                         return Number(n)
-                    }else if(n>0&&n<=22){
+                    } else if (n > 0 && n <= 22) {
                         return Number(n)
                     }
                 }
-                if(num>0){
+                if (num > 0) {
                     return c(num)
-                }else if(num<0){
-                    return c(num*-1)
+                } else if (num < 0) {
+                    return c(num * -1)
                 }
             },
-            getTarot(num){
-                return this.$store.getters.tarot[num-1]
+            getTarot(num) {
+                return this.$store.getters.tarot[num - 1]
             },
-            first(){
+            first() {
                 return Number(this.check(this.$refs.onedays.value))
             },
-            two(){
+            two() {
                 return Number(this.$refs.onemounth.value)
             },
-            three(){
+            three() {
                 const d = this.$refs.oneyear.value
-                let sum = Number(d[0])+Number(d[1])+Number(d[2])+Number(d[3])
+                let sum = Number(d[0]) + Number(d[1]) + Number(d[2]) + Number(d[3])
                 return Number(this.check(sum))
             },
-            fore(){
+            fore() {
                 return this.check(this.first() + this.two())
             },
-            five(){
+            five() {
                 return this.check(this.two() + this.three())
             },
-            sixs(){
+            sixs() {
                 return this.check(this.fore() + this.five())
             },
-            seven(){
+            seven() {
                 return this.check(this.first() + this.five())
             },
-            ethe(){
+            ethe() {
                 return this.check(this.two() + this.sixs())
             },
-            MinMax(first, second){
-                if(first > second){
+            MinMax(first, second) {
+                if (first > second) {
                     return this.check(first - second)
-                }else if(first < second){
+                } else if (first < second) {
                     return this.check(second - first)
-                }else if(first === second){
+                } else if (first === second) {
                     return this.check(22)
                 }
             },
-            nine(){
-                return this.MinMax(this.first(),this.two())
+            nine() {
+                return this.MinMax(this.first(), this.two())
             },
-            ten(){
-                return this.MinMax(this.three(),this.two())
+            ten() {
+                return this.MinMax(this.three(), this.two())
             },
-            ileven(){
-                return this.MinMax(this.nine(),this.ten())
+            ileven() {
+                return this.MinMax(this.nine(), this.ten())
             },
-            tvelf(){
+            tvelf() {
                 return this.check(this.seven() + this.ethe())
             },
-            therten(){
+            therten() {
                 return this.check(this.first() + this.fore() + this.sixs())
             },
-            foreten(){
+            foreten() {
                 return this.check(this.three() + this.five() + this.sixs())
             },
-            fiften(){
+            fiften() {
                 return this.check(this.nine() + this.ten() + this.ileven() - this.seven())
             },
-            sixten(){
-                return this.check( (this.first() + this.fore()) + (this.five() + this.three()) )
+            sixten() {
+                return this.check((this.first() + this.fore()) + (this.five() + this.three()))
             },
-            seventen(){
+            seventen() {
                 return this.check(this.ileven() + this.sixs())
             },
-            eten(){
+            eten() {
                 return this.check(this.ileven() + this.ethe())
             },
-            A(){
-                return this.check(this.first()+ this.fore())
+            A() {
+                return this.check(this.first() + this.fore())
             },
-            B(){
-                return this.check(this.two()+ this.fore())
+            B() {
+                return this.check(this.two() + this.fore())
             },
-            C(){
-                return this.check(this.two()+ this.five())
+            C() {
+                return this.check(this.two() + this.five())
             },
-            D(){
-                return this.check(this.three()+ this.five())
+            D() {
+                return this.check(this.three() + this.five())
             },
-            E(){
-                return this.check(this.fore()+ this.sixs())
+            E() {
+                return this.check(this.fore() + this.sixs())
             },
-            F(){
-                return this.check(this.five()+ this.sixs())
+            F() {
+                return this.check(this.five() + this.sixs())
             },
-            calculate(){
+            calculate() {
                 let err = []
-                if(!this.$refs.onedays.value) {
+                if (!this.$refs.onedays.value) {
                     this.$refs.onedays.classList.add('err')
                     err.push('onedays')
-                }else{
+                } else {
                     this.$refs.onedays.classList.remove('err')
                     const ind = err.indexOf('onedays')
-                    err.slice(ind,1)
+                    err.slice(ind, 1)
                 }
-                if(!this.$refs.onemounth.value) {
+                if (!this.$refs.onemounth.value) {
                     this.$refs.onemounth.classList.add('err')
                     err.push('onemounth')
-                }else{
+                } else {
                     this.$refs.onemounth.classList.remove('err')
                     const ind = err.indexOf('onemounth')
-                    err.slice(ind,1)
+                    err.slice(ind, 1)
                 }
-                if(!this.$refs.oneyear.value) {
+                if (!this.$refs.oneyear.value) {
                     this.$refs.oneyear.classList.add('err')
                     err.push('oneyear')
-                }else{
+                } else {
                     this.$refs.oneyear.classList.remove('err')
                     const ind = err.indexOf('oneyear')
-                    err.slice(ind,1)
+                    err.slice(ind, 1)
                 }
-                if(err.length===0){
+                if (err.length === 0) {
                     this.map = {
                         one: this.getTarot(this.first()),
                         two: this.getTarot(this.two()),
@@ -201,7 +206,7 @@
                         tvelf: this.getTarot(this.tvelf()),
                         therten: this.getTarot(this.therten()),
                         foreten: this.getTarot(this.foreten()),
-                        fiften:  this.getTarot(this.fiften()),
+                        fiften: this.getTarot(this.fiften()),
                         sixten: this.getTarot(this.sixten()),
                         seventen: this.getTarot(this.seventen()),
                         eten: this.getTarot(this.eten()),
