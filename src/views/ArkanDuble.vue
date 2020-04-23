@@ -29,11 +29,13 @@
                         </div>
                         <div class="input_group">
                             <span>Месяц</span>
-                            <input type="number" :min="1" :max="12" ref="mounth2" @change="inputCheck($event,'mounth2')">
+                            <input type="number" :min="1" :max="12" ref="mounth2"
+                                   @change="inputCheck($event,'mounth2')">
                         </div>
                         <div class="input_group">
                             <span>Год</span>
-                            <input type="number" :min="1900" :max="2030" ref="year2" @change="inputCheck($event,'year2')">
+                            <input type="number" :min="1900" :max="2030" ref="year2"
+                                   @change="inputCheck($event,'year2')">
                         </div>
                     </div>
                 </div>
@@ -43,11 +45,13 @@
                     <div class="grid">
                         <div class="input_group">
                             <span>Месяц</span>
-                            <input type="number" :min="0" :max="12" ref="arkandublemounth" @change="inputCheck($event,'arkandublemounth')" @keyup.enter="calculate">
+                            <input type="number" :min="0" :max="12" ref="arkandublemounth"
+                                   @change="inputCheck($event,'arkandublemounth')" @keyup.enter="calculate">
                         </div>
                         <div class="input_group">
                             <span>Год</span>
-                            <input type="number" :min="1900" :max="2030" ref="arkandubleyear" @change="inputCheck($event,'arkandubleyear')" @keyup.enter="calculate">
+                            <input type="number" :min="1900" :max="2030" ref="arkandubleyear"
+                                   @change="inputCheck($event,'arkandubleyear')" @keyup.enter="calculate">
                         </div>
                     </div>
                 </div>
@@ -61,18 +65,20 @@
         </div>
         <div class="horScroller">
             <transition name="fade">
-                <div class="dubleMaps" v-if="map!==null&&map2!==null&&dubleMap!==null">
-                    <div class="border firstmap">
-                        <h3>1 человек</h3>
-                        <tarotMaps :maps="map" :short="short" :showCard="cards"/>
-                    </div>
-                    <div class="border secondmap">
-                        <h3>2 человек</h3>
-                        <tarotMaps :maps="map2" :short="short" :showCard="cards"/>
-                    </div>
-                    <div class="border dublemap">
-                        <h3>Парный портрет</h3>
-                        <tarotMaps :maps="dubleMap" :short="short" :showCard="cards"/>
+                <div class="simple_grid">
+                    <div class="dubleMaps" v-if="map!==null&&map2!==null&&dubleMap!==null">
+                        <div class="border firstmap">
+                            <h3>1 человек</h3>
+                            <tarotMaps :maps="map" :short="short" :showCard="cards"/>
+                        </div>
+                        <div class="border secondmap">
+                            <h3>2 человек</h3>
+                            <tarotMaps :maps="map2" :short="short" :showCard="cards"/>
+                        </div>
+                        <div class="border dublemap">
+                            <h3>Парный портрет</h3>
+                            <tarotMaps :maps="dubleMap" :short="short" :showCard="cards"/>
+                        </div>
                     </div>
                 </div>
             </transition>
@@ -86,7 +92,7 @@
 
     export default {
         name: 'App',
-        components: {tarotMaps,Checkbox},
+        components: {tarotMaps, Checkbox},
         data: () => ({
             map: null,
             map2: null,
@@ -95,25 +101,25 @@
             cards: false,
         }),
         methods: {
-            shortText(){
-              if(this.short){
-                  return 'Полный портрет'
-              }else{
-                  return 'Сокращенный портрет'
-              }
+            shortText() {
+                if (this.short) {
+                    return 'Полный портрет'
+                } else {
+                    return 'Сокращенный портрет'
+                }
             },
-            arkanDubleMounth(){
+            arkanDubleMounth() {
                 return Number(this.$refs.arkandublemounth.value)
             },
-            arkanDubleYear(){
+            arkanDubleYear() {
                 const d = this.$refs.arkandubleyear.value
-                let sum = Number(d[0])+Number(d[1])+Number(d[2])+Number(d[3])
+                let sum = Number(d[0]) + Number(d[1]) + Number(d[2]) + Number(d[3])
                 return Number(this.check(sum))
             },
             inputCheck(e, target) {
                 if (Number(e.target.value) < Number(e.target.min)) {
                     this.$refs[target].value = Number(e.target.min)
-                } else if (Number(e.target.value) > Number(e.target.max) ) {
+                } else if (Number(e.target.value) > Number(e.target.max)) {
                     this.$refs[target].value = Number(e.target.max)
                 }
             },
@@ -222,65 +228,65 @@
             },
             calculate() {
                 let err = []
-                if(!this.$refs.days.value) {
+                if (!this.$refs.days.value) {
                     this.$refs.days.classList.add('err')
                     err.push('days')
-                }else{
+                } else {
                     this.$refs.days.classList.remove('err')
                     const ind = err.indexOf('days')
-                    err.slice(ind,1)
+                    err.slice(ind, 1)
                 }
-                if(!this.$refs.mounth.value) {
+                if (!this.$refs.mounth.value) {
                     this.$refs.mounth.classList.add('err')
                     err.push('mounth')
-                }else{
+                } else {
                     this.$refs.mounth.classList.remove('err')
                     const ind = err.indexOf('mounth')
-                    err.slice(ind,1)
+                    err.slice(ind, 1)
                 }
-                if(!this.$refs.year.value) {
+                if (!this.$refs.year.value) {
                     this.$refs.year.classList.add('err')
                     err.push('year')
-                }else{
+                } else {
                     this.$refs.year.classList.remove('err')
                     const ind = err.indexOf('year')
-                    err.slice(ind,1)
+                    err.slice(ind, 1)
                 }
-                if(!this.$refs.days2.value) {
+                if (!this.$refs.days2.value) {
                     this.$refs.days2.classList.add('err')
                     err.push('days2')
-                }else{
+                } else {
                     this.$refs.days2.classList.remove('err')
                     const ind = err.indexOf('days2')
-                    err.slice(ind,1)
+                    err.slice(ind, 1)
                 }
-                if(!this.$refs.mounth2.value) {
+                if (!this.$refs.mounth2.value) {
                     this.$refs.mounth2.classList.add('err')
                     err.push('mounth2')
-                }else{
+                } else {
                     this.$refs.mounth2.classList.remove('err')
                     const ind = err.indexOf('mounth2')
-                    err.slice(ind,1)
+                    err.slice(ind, 1)
                 }
-                if(!this.$refs.year2.value) {
+                if (!this.$refs.year2.value) {
                     this.$refs.year2.classList.add('err')
                     err.push('year2')
-                }else{
+                } else {
                     this.$refs.year2.classList.remove('err')
                     const ind = err.indexOf('year2')
-                    err.slice(ind,1)
+                    err.slice(ind, 1)
                 }
 
-                if(!this.$refs.arkandubleyear.value) {
+                if (!this.$refs.arkandubleyear.value) {
                     this.$refs.arkandubleyear.classList.add('err')
                     err.push('arkandubleyear')
-                }else{
+                } else {
                     this.$refs.arkandubleyear.classList.remove('err')
                     const ind = err.indexOf('arkandubleyear')
-                    err.slice(ind,1)
+                    err.slice(ind, 1)
                 }
 
-                if(err.length===0){
+                if (err.length === 0) {
                     const days = this.$refs.days.value
                     const mounth = this.$refs.mounth.value
                     const year = this.$refs.year.value
@@ -343,30 +349,30 @@
                         F: this.getTarot(this.F(days2, mounth2, year2)),
                     }
                     this.dubleMap = {
-                        one: this.getTarot(this.check((this.arkanDubleMounth()+this.arkanDubleYear())+ this.first(days, mounth, year) + this.first(days2, mounth2, year2)) ) ,
-                        two: this.getTarot(this.check((this.arkanDubleMounth()+this.arkanDubleYear())+ this.two(days,mounth, year) + this.two(days2, mounth2, year2)) ) ,
-                        three: this.getTarot(this.check((this.arkanDubleMounth()+this.arkanDubleYear())+ this.three(days,mounth, year) + this.three(days2, mounth2, year2)) ) ,
-                        fore: this.getTarot(this.check((this.arkanDubleMounth()+this.arkanDubleYear())+ this.fore(days,mounth, year) + this.fore(days2, mounth2, year2)) ) ,
-                        five: this.getTarot(this.check((this.arkanDubleMounth()+this.arkanDubleYear())+ this.five(days,mounth, year) + this.five(days2, mounth2, year2)) ) ,
-                        sixs: this.getTarot(this.check((this.arkanDubleMounth()+this.arkanDubleYear())+ this.sixs(days,mounth, year) + this.sixs(days2, mounth2, year2)) ) ,
-                        seven: this.getTarot(this.check((this.arkanDubleMounth()+this.arkanDubleYear())+ this.seven(days,mounth, year) + this.seven(days2, mounth2, year2)) ) ,
-                        ethe: this.getTarot(this.check((this.arkanDubleMounth()+this.arkanDubleYear())+ this.ethe(days,mounth, year) + this.ethe(days2, mounth2, year2)) ) ,
-                        nine: this.getTarot(this.check((this.arkanDubleMounth()+this.arkanDubleYear())+ this.nine(days,mounth, year) + this.nine(days2, mounth2, year2)) ) ,
-                        ten: this.getTarot(this.check((this.arkanDubleMounth()+this.arkanDubleYear())+ this.ten(days,mounth, year) + this.ten(days2, mounth2, year2)) ) ,
-                        ileven: this.getTarot(this.check((this.arkanDubleMounth()+this.arkanDubleYear())+ this.ileven(days,mounth, year) + this.ileven(days2, mounth2, year2)) ) ,
-                        tvelf: this.getTarot(this.check((this.arkanDubleMounth()+this.arkanDubleYear())+ this.tvelf(days,mounth, year) + this.tvelf(days2, mounth2, year2)) ) ,
-                        therten: this.getTarot(this.check((this.arkanDubleMounth()+this.arkanDubleYear())+ this.therten(days,mounth, year) + this.therten(days2, mounth2, year2)) ) ,
-                        foreten: this.getTarot(this.check((this.arkanDubleMounth()+this.arkanDubleYear())+ this.foreten(days,mounth, year) + this.foreten(days2, mounth2, year2)) ) ,
-                        fiften: this.getTarot(this.check((this.arkanDubleMounth()+this.arkanDubleYear())+ this.fiften(days,mounth, year) + this.fiften(days2, mounth2, year2)) ) ,
-                        sixten: this.getTarot(this.check((this.arkanDubleMounth()+this.arkanDubleYear())+ this.sixten(days,mounth, year) + this.sixten(days2, mounth2, year2)) ) ,
-                        seventen: this.getTarot(this.check((this.arkanDubleMounth()+this.arkanDubleYear())+ this.seventen(days,mounth, year) + this.seventen(days2, mounth2, year2)) ) ,
-                        eten: this.getTarot(this.check((this.arkanDubleMounth()+this.arkanDubleYear())+ this.eten(days,mounth, year) + this.eten(days2, mounth2, year2)) ) ,
-                        A: this.getTarot(this.check((this.arkanDubleMounth()+this.arkanDubleYear())+ this.A(days,mounth, year) + this.A(days2, mounth2, year2)) ) ,
-                        B: this.getTarot(this.check((this.arkanDubleMounth()+this.arkanDubleYear())+ this.B(days,mounth, year) + this.B(days2, mounth2, year2)) ) ,
-                        C: this.getTarot(this.check((this.arkanDubleMounth()+this.arkanDubleYear())+ this.C(days,mounth, year) + this.C(days2, mounth2, year2)) ) ,
-                        D: this.getTarot(this.check((this.arkanDubleMounth()+this.arkanDubleYear())+ this.D(days,mounth, year) + this.D(days2, mounth2, year2)) ) ,
-                        E: this.getTarot(this.check((this.arkanDubleMounth()+this.arkanDubleYear())+ this.E(days,mounth, year) + this.E(days2, mounth2, year2)) ) ,
-                        F: this.getTarot(this.check((this.arkanDubleMounth()+this.arkanDubleYear()) + this.F(days,mounth, year) + this.F(days2, mounth2, year2)) ) ,
+                        one: this.getTarot(this.check((this.arkanDubleMounth() + this.arkanDubleYear()) + this.first(days, mounth, year) + this.first(days2, mounth2, year2))),
+                        two: this.getTarot(this.check((this.arkanDubleMounth() + this.arkanDubleYear()) + this.two(days, mounth, year) + this.two(days2, mounth2, year2))),
+                        three: this.getTarot(this.check((this.arkanDubleMounth() + this.arkanDubleYear()) + this.three(days, mounth, year) + this.three(days2, mounth2, year2))),
+                        fore: this.getTarot(this.check((this.arkanDubleMounth() + this.arkanDubleYear()) + this.fore(days, mounth, year) + this.fore(days2, mounth2, year2))),
+                        five: this.getTarot(this.check((this.arkanDubleMounth() + this.arkanDubleYear()) + this.five(days, mounth, year) + this.five(days2, mounth2, year2))),
+                        sixs: this.getTarot(this.check((this.arkanDubleMounth() + this.arkanDubleYear()) + this.sixs(days, mounth, year) + this.sixs(days2, mounth2, year2))),
+                        seven: this.getTarot(this.check((this.arkanDubleMounth() + this.arkanDubleYear()) + this.seven(days, mounth, year) + this.seven(days2, mounth2, year2))),
+                        ethe: this.getTarot(this.check((this.arkanDubleMounth() + this.arkanDubleYear()) + this.ethe(days, mounth, year) + this.ethe(days2, mounth2, year2))),
+                        nine: this.getTarot(this.check((this.arkanDubleMounth() + this.arkanDubleYear()) + this.nine(days, mounth, year) + this.nine(days2, mounth2, year2))),
+                        ten: this.getTarot(this.check((this.arkanDubleMounth() + this.arkanDubleYear()) + this.ten(days, mounth, year) + this.ten(days2, mounth2, year2))),
+                        ileven: this.getTarot(this.check((this.arkanDubleMounth() + this.arkanDubleYear()) + this.ileven(days, mounth, year) + this.ileven(days2, mounth2, year2))),
+                        tvelf: this.getTarot(this.check((this.arkanDubleMounth() + this.arkanDubleYear()) + this.tvelf(days, mounth, year) + this.tvelf(days2, mounth2, year2))),
+                        therten: this.getTarot(this.check((this.arkanDubleMounth() + this.arkanDubleYear()) + this.therten(days, mounth, year) + this.therten(days2, mounth2, year2))),
+                        foreten: this.getTarot(this.check((this.arkanDubleMounth() + this.arkanDubleYear()) + this.foreten(days, mounth, year) + this.foreten(days2, mounth2, year2))),
+                        fiften: this.getTarot(this.check((this.arkanDubleMounth() + this.arkanDubleYear()) + this.fiften(days, mounth, year) + this.fiften(days2, mounth2, year2))),
+                        sixten: this.getTarot(this.check((this.arkanDubleMounth() + this.arkanDubleYear()) + this.sixten(days, mounth, year) + this.sixten(days2, mounth2, year2))),
+                        seventen: this.getTarot(this.check((this.arkanDubleMounth() + this.arkanDubleYear()) + this.seventen(days, mounth, year) + this.seventen(days2, mounth2, year2))),
+                        eten: this.getTarot(this.check((this.arkanDubleMounth() + this.arkanDubleYear()) + this.eten(days, mounth, year) + this.eten(days2, mounth2, year2))),
+                        A: this.getTarot(this.check((this.arkanDubleMounth() + this.arkanDubleYear()) + this.A(days, mounth, year) + this.A(days2, mounth2, year2))),
+                        B: this.getTarot(this.check((this.arkanDubleMounth() + this.arkanDubleYear()) + this.B(days, mounth, year) + this.B(days2, mounth2, year2))),
+                        C: this.getTarot(this.check((this.arkanDubleMounth() + this.arkanDubleYear()) + this.C(days, mounth, year) + this.C(days2, mounth2, year2))),
+                        D: this.getTarot(this.check((this.arkanDubleMounth() + this.arkanDubleYear()) + this.D(days, mounth, year) + this.D(days2, mounth2, year2))),
+                        E: this.getTarot(this.check((this.arkanDubleMounth() + this.arkanDubleYear()) + this.E(days, mounth, year) + this.E(days2, mounth2, year2))),
+                        F: this.getTarot(this.check((this.arkanDubleMounth() + this.arkanDubleYear()) + this.F(days, mounth, year) + this.F(days2, mounth2, year2))),
                     }
                 }
 

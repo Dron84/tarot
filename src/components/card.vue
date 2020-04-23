@@ -117,6 +117,7 @@
             .modal__img
                 border-radius: 10px
                 height: 90%
+                width: auto
     .fade-enter-active, .fade-leave-active
         transition: opacity .5s
 
