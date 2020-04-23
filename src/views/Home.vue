@@ -1,7 +1,7 @@
 <template>
     <div id="app" class="container">
         <div class="wrap">
-            <h2>Дата</h2>
+            <h2>Введите дату рождения</h2>
             <div class="grid">
                 <div class="input_group">
                     <span>День*</span>
