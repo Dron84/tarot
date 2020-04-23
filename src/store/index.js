@@ -24,7 +24,7 @@ export default new Vuex.Store({
           {img: 'img/16.jpg', rim: 'XVI'},
           {img: 'img/17.jpg', rim: 'XVII'},
           {img: 'img/18.jpg', rim: 'XVIII'},
-          {img: 'img/19.jpg', rim: 'IX'},
+          {img: 'img/19.jpg', rim: 'XIX'},
           {img: 'img/20.jpg', rim: 'XX'},
           {img: 'img/21.jpg', rim: 'XXI'},
           {img: 'img/22.jpg', rim: 'XXII'}

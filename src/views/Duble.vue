@@ -3,7 +3,11 @@
         <div class="wrap">
             <div class="flex">
                 <div style="margin: 0 10px;">
-                    <h2>Введите дату рождения 1го</h2>
+                    <h2>Дата 1</h2>
+                    <div class="input_group">
+                        <span>имя/название</span>
+                        <input type="text" placeholder="имя/название">
+                    </div>
                     <div class="grid">
                         <div class="input_group">
                             <span>День*</span>
@@ -24,7 +28,12 @@
                 </div>
 
                 <div style="margin: 0 10px;">
-                    <h2>Введите дату рождения 2го</h2>
+                    <h2>Дата 2</h2>
+                    <div class="input_group">
+                        <span>имя/название</span>
+                        <input type="text" placeholder="имя/название">
+                    </div>
+
                     <div class="grid">
                         <div class="input_group">
                             <span>День*</span>

@@ -3,7 +3,11 @@
         <div class="wrap">
             <div class="flex">
                 <div style="margin: 0 10px;">
-                    <h2>Введите дату рождения 1го</h2>
+                    <h2>1 человек</h2>
+                    <div class="input_group">
+                        <span>имя/название</span>
+                        <input type="text" placeholder="имя/название">
+                    </div>
                     <div class="grid">
                         <div class="input_group">
                             <span>День*</span>
@@ -21,7 +25,11 @@
                 </div>
 
                 <div style="margin: 0 10px;">
-                    <h2>Введите дату рождения 2го</h2>
+                    <h2>2 человек</h2>
+                    <div class="input_group">
+                        <span>имя/название</span>
+                        <input type="text" placeholder="имя/название">
+                    </div>
                     <div class="grid">
                         <div class="input_group">
                             <span>День*</span>
@@ -68,11 +76,11 @@
                 <div class="simple_grid">
                     <div class="dubleMaps" v-if="map!==null&&map2!==null&&dubleMap!==null">
                         <div class="border firstmap">
-                            <h3>1 человек</h3>
+                            <h3>прогноз для 1 человека</h3>
                             <tarotMaps :maps="map" :short="short" :showCard="cards"/>
                         </div>
                         <div class="border secondmap">
-                            <h3>2 человек</h3>
+                            <h3>прогноз для 2 человека</h3>
                             <tarotMaps :maps="map2" :short="short" :showCard="cards"/>
                         </div>
                         <div class="border dublemap">
