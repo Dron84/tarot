@@ -146,32 +146,58 @@
                 return this.check(this.five()+ this.sixs())
             },
             calculate(){
-                // console.log('date', this.dd, this.mm, this.yyyy)
-                this.map = {
-                    one: this.getTarot(this.first()),
-                    two: this.getTarot(this.two()),
-                    three: this.getTarot(this.three()),
-                    fore: this.getTarot(this.fore()),
-                    five: this.getTarot(this.five()),
-                    sixs: this.getTarot(this.sixs()),
-                    seven: this.getTarot(this.seven()),
-                    ethe: this.getTarot(this.ethe()),
-                    nine: this.getTarot(this.nine()),
-                    ten: this.getTarot(this.ten()),
-                    ileven: this.getTarot(this.ileven()),
-                    tvelf: this.getTarot(this.tvelf()),
-                    therten: this.getTarot(this.therten()),
-                    foreten: this.getTarot(this.foreten()),
-                    fiften:  this.getTarot(this.fiften()),
-                    sixten: this.getTarot(this.sixten()),
-                    seventen: this.getTarot(this.seventen()),
-                    eten: this.getTarot(this.eten()),
-                    A: this.getTarot(this.A()),
-                    B: this.getTarot(this.B()),
-                    C: this.getTarot(this.C()),
-                    D: this.getTarot(this.D()),
-                    E: this.getTarot(this.E()),
-                    F: this.getTarot(this.F()),
+                let err = []
+                if(!this.$refs.onedays.value) {
+                    this.$refs.onedays.classList.add('err')
+                    err.push('onedays')
+                }else{
+                    this.$refs.onedays.classList.remove('err')
+                    const ind = err.indexOf('onedays')
+                    err.slice(ind,1)
+                }
+                if(!this.$refs.onemounth.value) {
+                    this.$refs.onemounth.classList.add('err')
+                    err.push('onemounth')
+                }else{
+                    this.$refs.onemounth.classList.remove('err')
+                    const ind = err.indexOf('onemounth')
+                    err.slice(ind,1)
+                }
+                if(!this.$refs.oneyear.value) {
+                    this.$refs.oneyear.classList.add('err')
+                    err.push('oneyear')
+                }else{
+                    this.$refs.oneyear.classList.remove('err')
+                    const ind = err.indexOf('oneyear')
+                    err.slice(ind,1)
+                }
+                if(err.length===0){
+                    this.map = {
+                        one: this.getTarot(this.first()),
+                        two: this.getTarot(this.two()),
+                        three: this.getTarot(this.three()),
+                        fore: this.getTarot(this.fore()),
+                        five: this.getTarot(this.five()),
+                        sixs: this.getTarot(this.sixs()),
+                        seven: this.getTarot(this.seven()),
+                        ethe: this.getTarot(this.ethe()),
+                        nine: this.getTarot(this.nine()),
+                        ten: this.getTarot(this.ten()),
+                        ileven: this.getTarot(this.ileven()),
+                        tvelf: this.getTarot(this.tvelf()),
+                        therten: this.getTarot(this.therten()),
+                        foreten: this.getTarot(this.foreten()),
+                        fiften:  this.getTarot(this.fiften()),
+                        sixten: this.getTarot(this.sixten()),
+                        seventen: this.getTarot(this.seventen()),
+                        eten: this.getTarot(this.eten()),
+                        A: this.getTarot(this.A()),
+                        B: this.getTarot(this.B()),
+                        C: this.getTarot(this.C()),
+                        D: this.getTarot(this.D()),
+                        E: this.getTarot(this.E()),
+                        F: this.getTarot(this.F()),
+                    }
                 }
             },
         },
@@ -229,7 +255,8 @@
       text-align: center
       border-radius: 5px
       border: 1px solid $five
-
+      &.err
+        border: 2px solid red
   .fade-enter-active, .fade-leave-active
     transition: opacity .5s
   .fade-enter, .fade-leave-to
