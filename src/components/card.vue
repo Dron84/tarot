@@ -7,7 +7,7 @@
             <div class="modal" v-if="modal">
                 <div class="wrapper">
                     <span class="modal__number">{{caption}}</span>
-                    <img :src="imgsrc" :alt="rim_number">
+                    <img class="modal__img" :src="imgsrc" :alt="rim_number">
                     <span class="modal__rim_number">{{rim_number}}</span>
                 </div>
             </div>
@@ -85,27 +85,26 @@
                 top: 0
             &.rim_number
                 bottom: 0
-        img
-            display: block
-            height: 260px
-            border-radius: 10px
 
     .modal
         position: fixed
         top: 0
         left: 0
-        width: 100%
-        height: 100%
+        bottom: 0
+        right: 0
+        width: 100vw
+        height: 100vh
         background-color: $three
         display: grid
         justify-content: center
         align-items: center
         z-index: 10000
         .wrapper
-            display: grid
+            display: flex
             width: auto
-            height: 100vh
+            height: 100%
             justify-content: center
+            align-items: center
             position: relative
             span
                 display: block
@@ -115,9 +114,9 @@
                     top: 0
                 &.modal__rim_number
                     bottom: 0
-            img
-                height: 96%
+            .modal__img
                 border-radius: 10px
+                height: 90%
     .fade-enter-active, .fade-leave-active
         transition: opacity .5s
 
