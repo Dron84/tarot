@@ -76,15 +76,15 @@
                 <div class="simple_grid">
                     <div class="dubleMaps" v-if="map!==null&&map2!==null&&dubleMap!==null">
                         <div class="border firstmap">
-                            <h3>прогноз для 1 человека</h3>
+                            <h3>прогноз для даты 1</h3>
                             <tarotMaps :maps="map" :short="short" :showCard="cards"/>
                         </div>
                         <div class="border secondmap">
-                            <h3>прогноз для 2 человека</h3>
+                            <h3>прогноз для даты 2</h3>
                             <tarotMaps :maps="map2" :short="short" :showCard="cards"/>
                         </div>
                         <div class="border dublemap">
-                            <h3>Парный портрет</h3>
+                            <h3>Парный прогноз</h3>
                             <tarotMaps :maps="dubleMap" :short="short" :showCard="cards"/>
                         </div>
                     </div>
@@ -111,9 +111,9 @@
         methods: {
             shortText() {
                 if (this.short) {
-                    return 'Полный портрет'
+                    return 'Полный прогноз'
                 } else {
-                    return 'Сокращенный портрет'
+                    return 'Сокращенный прогноз'
                 }
             },
             arkanDubleMounth() {

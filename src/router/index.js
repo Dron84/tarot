@@ -20,13 +20,13 @@ const routes = [
     {
         path: '/arkan',
         name: 'arkan',
-        title: 'Прогноз на месяц/год',
+        title: 'Индивидуальный прогноз на месяц/год',
         component: () => import(/* webpackChunkName: "about" */ '../views/Arkan.vue')
     },
     {
         path: '/arkanduble',
         name: 'arkanduble',
-        title: 'Парный Прогноз на месяц/год',
+        title: 'Парный прогноз на месяц/год',
         component: () => import(/* webpackChunkName: "about" */ '../views/ArkanDuble.vue')
     }
 ]

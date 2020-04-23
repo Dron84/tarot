@@ -72,9 +72,9 @@
         methods: {
             shortText() {
                 if (this.short) {
-                    return 'Полный портрет'
+                    return 'Полный прогноз'
                 } else {
-                    return 'Сокращенный портрет'
+                    return 'Сокращенный прогноз'
                 }
             },
             inputCheck(e, target) {

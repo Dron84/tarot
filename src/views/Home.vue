@@ -43,7 +43,7 @@
         components: {tarotMaps, Checkbox},
         data: () => ({
             map: null,
-            short: false,
+            short: true,
             cards: false,
         }),
         methods: {
