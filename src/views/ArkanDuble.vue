@@ -3,7 +3,7 @@
         <div class="wrap">
             <div class="flex">
                 <div style="margin: 0 10px;">
-                    <h2>1 человек</h2>
+                    <h2>Дата 1</h2>
                     <div class="input_group">
                         <span>имя/название</span>
                         <input type="text" placeholder="имя/название">
@@ -25,7 +25,7 @@
                 </div>
 
                 <div style="margin: 0 10px;">
-                    <h2>2 человек</h2>
+                    <h2>Дата 2</h2>
                     <div class="input_group">
                         <span>имя/название</span>
                         <input type="text" placeholder="имя/название">

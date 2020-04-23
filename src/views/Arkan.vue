@@ -3,7 +3,7 @@
         <div class="wrap">
             <div class="flex">
                 <div style="margin: 0 10px;">
-                    <h2>Введите дату рождения</h2>
+                    <h2>Дата</h2>
                     <div class="grid">
                         <div class="input_group">
                             <span>День*</span>
@@ -26,7 +26,7 @@
                 </div>
 
                 <div style="margin: 0 10px;">
-                    <h2>Дату прогноза</h2>
+                    <h2>Cрок прогноза</h2>
                     <div class="grid">
                         <div class="input_group">
                             <span>Месяц</span>
