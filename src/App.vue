@@ -93,7 +93,8 @@
     display: grid
     grid-template-columns: repeat(auto-fit, minmax(60px, 1fr))
     grid-gap: 10px
-
+  .simple_grid
+    display: grid
   .flex
     display: flex
     flex-wrap: wrap
@@ -125,18 +126,53 @@
     grid-template-areas: "firstmap secondmap" "dublemap dublemap"
     grid-gap: 20px
     overflow-x: scroll
-    min-width: 600px
+    min-width: 750px
     div:nth-child(1)
       grid-area: firstmap
     div:nth-child(2)
       grid-area: secondmap
     div:nth-child(3)
       grid-area: dublemap
+      display: grid
+      justify-content: center
+      grid-template-areas: "headers" "dublemaps"
+      h3
+        grid-area: headers
+      .maps
+        grid-area: dublemaps
 
   .fade-enter-active, .fade-leave-active
     transition: opacity .5s
 
   .fade-enter, .fade-leave-to
     opacity: 0
+
+  .checkbox-component > input + label > .input-box
+    position: relative !important
+    border: 1px solid $five !important
+    border-radius: 40% !important
+    width: 30px !important
+    height: 20px !important
+    background: #fff !important
+    overflow: visible !important
+    transition: background 0.2s ease-in !important
+    vertical-align: -15% !important
+    &:before
+      content: '' !important
+      position: absolute !important
+      top: -2px !important
+      left: -1px !important
+      border: 1px solid $five !important
+      border-radius: 50% !important
+      width: 20px !important
+      height: 20px !important
+      background: #fff !important
+      transition: transform 0.3s ease-out !important
+
+  .checkbox-component > input:checked + label > .input-box
+    background: $five !important
+    &:before
+      border-color: $five !important
+      transform: translateX(0.6em) !important
 
 </style>

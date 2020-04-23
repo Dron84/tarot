@@ -17,24 +17,29 @@
         </div>
       </div>
       <button @click="calculate">Рассчитать</button>
-      <span class="onHover" @click="short =! short">{{shortText()}}</span>
-    </div>
-    <transition name="fade">
-      <tarotMaps :maps="map" v-if="map!==null" :short="short"/>
-    </transition>
+      <div class="simple_grid">
+        <span class="onHover" @click="short =! short">{{shortText()}}</span>
+        <checkbox name="cards" value="1" v-model="cards" checked> Карты</checkbox>
+      </div>
 
+      <transition name="fade">
+        <tarotMaps :maps="map" v-if="map!==null" :short="short" :showCard="cards"/>
+      </transition>
+
+    </div>
   </div>
 </template>
 
 <script>
     import tarotMaps from '../components/map'
-
+    import {Checkbox} from 'vue-checkbox-radio';
     export default {
         name: 'App',
-        components: {tarotMaps},
+        components: {tarotMaps,Checkbox},
         data: () => ({
             map: null,
-            short: false
+            short: false,
+            cards: false,
         }),
         methods: {
             shortText(){

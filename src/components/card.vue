@@ -1,5 +1,5 @@
 <template>
-    <div class="card" @click="modal = !modal" :style="`background-image: url('${imgsrc}');`">
+    <div class="card" :class="{'short' : !showCard}" @click="modal = !modal" :style="cardShow">
         <span class="number">{{caption}}</span>
         <!--<img :src="imgsrc" :alt="rim_number">-->
         <span class="rim_number">{{rim_number}}</span>
@@ -22,9 +22,19 @@
             modal: false
         }),
         props:{
+            showCard: {type: Boolean, default: true},
             caption: {type: String,required: true},
             imgsrc: {type: String,required: true},
             rim_number: {type: String,required: true},
+        },
+        computed:{
+            cardShow(){
+                if(this.showCard===true){
+                    return `background-image: url('${this.imgsrc}');`
+                }else{
+                    return ''
+                }
+            }
         }
     }
 </script>
@@ -61,6 +71,9 @@
                 background-color: transparent
             span
                 background-color: $three
+        &.short
+            height: 40px
+            width: 40px
         span
             position: absolute
             text-align: center
@@ -103,30 +116,24 @@
                 &.modal__rim_number
                     bottom: 0
             img
-                height: 100%
+                height: 96%
                 border-radius: 10px
     .fade-enter-active, .fade-leave-active
         transition: opacity .5s
 
     .fade-enter, .fade-leave-to
         opacity: 0
-    @media (min-width: 1201px)
+    @media screen and (min-width: 1201px)
         .card
-            height: 500px
-    @media (max-width: 1200px)
-        .card
-            height: 300px
-            img
-                height: 160px
-    @media (max-width: 800px)
+            height: 250px
+    @media screen and (max-width: 1200px)
         .card
             height: 200px
-            img
-                height: 100px
-    @media (max-width: 500px)
+    @media screen and (max-width: 800px)
         .card
-            height: 150px
-            img
-                height: 60px
+            height: 100px
+    @media screen and (max-width: 500px)
+        .card
+            height: 60px
 
 </style>
