@@ -8,13 +8,13 @@ const routes = [
     {
         path: '/',
         name: 'Home',
-        title: 'Индивидуальный',
+        title: 'Индивидуальный портрет',
         component: Home
     },
     {
         path: '/duble',
         name: 'Duble',
-        title: 'Парный',
+        title: 'Парный портрет',
         component: () => import(/* webpackChunkName: "about" */ '../views/Duble.vue')
     },
     {
