@@ -1,250 +1,258 @@
 <template>
-  <div id="app" class="container" >
-    <div class="wrap">
-      <div class="flex">
-        <div style="margin: 0 10px;">
-          <h2>Введите дату рождения</h2>
-          <div class="grid">
-            <div class="input_group">
-              <span>День</span>
-              <input type="number" :min="1" :max="31" ref="bday" @change="inputCheck($event,'bday')" @keyup.enter="calculate">
-            </div>
-            <div class="input_group">
-              <span>Месяц</span>
-              <input type="number" :min="1" :max="12" ref="bmounth" @change="inputCheck($event,'bmounth')" @keyup.enter="calculate">
-            </div>
-            <div class="input_group">
-              <span>Год</span>
-              <input type="number" :min="1900" :max="2030" ref="byear" @change="inputCheck($event,'byear')" @keyup.enter="calculate">
-            </div>
-          </div>
-        </div>
+    <div id="app" class="container">
+        <div class="wrap">
+            <div class="flex">
+                <div style="margin: 0 10px;">
+                    <h2>Введите дату рождения</h2>
+                    <div class="grid">
+                        <div class="input_group">
+                            <span>День</span>
+                            <input type="number" :min="1" :max="31" ref="bday" @change="inputCheck($event,'bday')"
+                                   @keyup.enter="calculate">
+                        </div>
+                        <div class="input_group">
+                            <span>Месяц</span>
+                            <input type="number" :min="1" :max="12" ref="bmounth" @change="inputCheck($event,'bmounth')"
+                                   @keyup.enter="calculate">
+                        </div>
+                        <div class="input_group">
+                            <span>Год</span>
+                            <input type="number" :min="1900" :max="2030" ref="byear"
+                                   @change="inputCheck($event,'byear')" @keyup.enter="calculate">
+                        </div>
+                    </div>
+                </div>
 
-        <div style="margin: 0 10px;">
-          <h2>Дату прогноза</h2>
-          <div class="grid">
-            <div class="input_group">
-              <span>Месяц</span>
-              <input type="number" :min="0" :max="12" ref="arkanmounth" @change="inputCheck($event,'arkanmounth')" @keyup.enter="calculate">
+                <div style="margin: 0 10px;">
+                    <h2>Дату прогноза</h2>
+                    <div class="grid">
+                        <div class="input_group">
+                            <span>Месяц</span>
+                            <input type="number" :min="0" :max="12" ref="arkanmounth"
+                                   @change="inputCheck($event,'arkanmounth')" @keyup.enter="calculate">
+                        </div>
+                        <div class="input_group">
+                            <span>Год</span>
+                            <input type="number" :min="1900" :max="2030" ref="arkanyear"
+                                   @change="inputCheck($event,'arkanyear')" @keyup.enter="calculate">
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="input_group">
-              <span>Год</span>
-              <input type="number" :min="1900" :max="2030" ref="arkanyear" @change="inputCheck($event,'arkanyear')" @keyup.enter="calculate">
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <button @click="calculate">Рассчитать</button>
-      <div class="simple_grid">
-        <span class="onHover" @click="short =! short">{{shortText()}}</span>
-        <checkbox name="cards" value="1" v-model="cards" checked> Карты</checkbox>
-      </div>
+            <button @click="calculate">Рассчитать</button>
+            <div class="simple_grid">
+                <span class="onHover" @click="short =! short">{{shortText()}}</span>
+                <checkbox name="cards" value="1" v-model="cards" checked> Карты</checkbox>
+            </div>
+
+            <transition name="fade">
+                <div class="simple_grid">
+                <tarotMaps :maps="map" v-if="map!==null" :short="short" :showCard="cards"/>
+                </div>
+            </transition>
+        </div>
     </div>
-    <transition name="fade">
-      <tarotMaps :maps="map" v-if="map!==null" :short="short" :showCard="cards"/>
-    </transition>
-
-  </div>
 </template>
 
 <script>
     import tarotMaps from '../components/map'
     import {Checkbox} from 'vue-checkbox-radio';
+
     export default {
         name: 'App',
-        components: {tarotMaps,Checkbox},
+        components: {tarotMaps, Checkbox},
         data: () => ({
             map: null,
             short: true,
             cards: false,
         }),
         methods: {
-            shortText(){
-                if(this.short){
+            shortText() {
+                if (this.short) {
                     return 'Полный портрет'
-                }else{
+                } else {
                     return 'Сокращенный портрет'
                 }
             },
-            inputCheck(e,target){
+            inputCheck(e, target) {
                 if (Number(e.target.value) < Number(e.target.min)) {
                     this.$refs[target].value = Number(e.target.min)
-                } else if (Number(e.target.value) > Number(e.target.max) ) {
+                } else if (Number(e.target.value) > Number(e.target.max)) {
                     this.$refs[target].value = Number(e.target.max)
                 }
             },
-            check(num){
-                const c = (n)=>{
-                    if(n>22){
-                        while (n > 22){
+            check(num) {
+                const c = (n) => {
+                    if (n > 22) {
+                        while (n > 22) {
                             n = n - 22
                         }
                         return Number(n)
-                    }else if(n>0&&n<=22){
+                    } else if (n > 0 && n <= 22) {
                         return Number(n)
                     }
                 }
-                if(num>0){
+                if (num > 0) {
                     return c(num)
-                }else if(num<0){
-                    return c(num*-1)
+                } else if (num < 0) {
+                    return c(num * -1)
                 }
             },
-            getTarot(num){
-                return this.$store.getters.tarot[num-1]
+            getTarot(num) {
+                return this.$store.getters.tarot[num - 1]
             },
-            arkanMounth(){
+            arkanMounth() {
                 return Number(this.$refs.arkanmounth.value)
             },
-            arkanYear(){
+            arkanYear() {
                 const d = this.$refs.arkanyear.value
-                let sum = Number(d[0])+Number(d[1])+Number(d[2])+Number(d[3])
+                let sum = Number(d[0]) + Number(d[1]) + Number(d[2]) + Number(d[3])
                 return Number(this.check(sum))
             },
-            first(){
+            first() {
                 return Number(this.check(this.$refs.bday.value))
             },
-            two(){
+            two() {
                 return Number(this.$refs.bmounth.value)
             },
-            three(){
+            three() {
                 const d = this.$refs.byear.value
-                let sum = Number(d[0])+Number(d[1])+Number(d[2])+Number(d[3])
+                let sum = Number(d[0]) + Number(d[1]) + Number(d[2]) + Number(d[3])
                 return Number(this.check(sum))
             },
-            fore(){
+            fore() {
                 return this.check(this.first() + this.two())
             },
-            five(){
+            five() {
                 return this.check(this.two() + this.three())
             },
-            sixs(){
+            sixs() {
                 return this.check(this.fore() + this.five())
             },
-            seven(){
+            seven() {
                 return this.check(this.first() + this.five())
             },
-            ethe(){
+            ethe() {
                 return this.check(this.two() + this.sixs())
             },
-            MinMax(first, second){
-                if(first > second){
+            MinMax(first, second) {
+                if (first > second) {
                     return this.check(first - second)
-                }else if(first < second){
+                } else if (first < second) {
                     return this.check(second - first)
-                }else if(first === second){
+                } else if (first === second) {
                     return this.check(22)
                 }
             },
-            nine(){
-                return this.MinMax(this.first(),this.two())
+            nine() {
+                return this.MinMax(this.first(), this.two())
             },
-            ten(){
-                return this.MinMax(this.three(),this.two())
+            ten() {
+                return this.MinMax(this.three(), this.two())
             },
-            ileven(){
-                return this.MinMax(this.nine(),this.ten())
+            ileven() {
+                return this.MinMax(this.nine(), this.ten())
             },
-            tvelf(){
+            tvelf() {
                 return this.check(this.seven() + this.ethe())
             },
-            therten(){
+            therten() {
                 return this.check(this.first() + this.fore() + this.sixs())
             },
-            foreten(){
+            foreten() {
                 return this.check(this.three() + this.five() + this.sixs())
             },
-            fiften(){
+            fiften() {
                 return this.check(this.nine() + this.ten() + this.ileven() - this.seven())
             },
-            sixten(){
-                return this.check( (this.first() + this.fore()) + (this.five() + this.three()) )
+            sixten() {
+                return this.check((this.first() + this.fore()) + (this.five() + this.three()))
             },
-            seventen(){
+            seventen() {
                 return this.check(this.ileven() + this.sixs())
             },
-            eten(){
+            eten() {
                 return this.check(this.ileven() + this.ethe())
             },
-            A(){
-                return this.check(this.first()+ this.fore())
+            A() {
+                return this.check(this.first() + this.fore())
             },
-            B(){
-                return this.check(this.two()+ this.fore())
+            B() {
+                return this.check(this.two() + this.fore())
             },
-            C(){
-                return this.check(this.two()+ this.five())
+            C() {
+                return this.check(this.two() + this.five())
             },
-            D(){
-                return this.check(this.three()+ this.five())
+            D() {
+                return this.check(this.three() + this.five())
             },
-            E(){
-                return this.check(this.fore()+ this.sixs())
+            E() {
+                return this.check(this.fore() + this.sixs())
             },
-            F(){
-                return this.check(this.five()+ this.sixs())
+            F() {
+                return this.check(this.five() + this.sixs())
             },
-            calculate(){
+            calculate() {
                 let err = []
-                if(!this.$refs.bday.value) {
+                if (!this.$refs.bday.value) {
                     this.$refs.bday.classList.add('err')
                     err.push('bday')
-                }else{
+                } else {
                     this.$refs.bday.classList.remove('err')
                     const ind = err.indexOf('bday')
-                    err.slice(ind,1)
+                    err.slice(ind, 1)
                 }
-                if(!this.$refs.bmounth.value) {
+                if (!this.$refs.bmounth.value) {
                     this.$refs.bmounth.classList.add('err')
                     err.push('bmounth')
-                }else{
+                } else {
                     this.$refs.bmounth.classList.remove('err')
                     const ind = err.indexOf('bmounth')
-                    err.slice(ind,1)
+                    err.slice(ind, 1)
                 }
-                if(!this.$refs.byear.value) {
+                if (!this.$refs.byear.value) {
                     this.$refs.byear.classList.add('err')
                     err.push('byear')
-                }else{
+                } else {
                     this.$refs.byear.classList.remove('err')
                     const ind = err.indexOf('byear')
-                    err.slice(ind,1)
+                    err.slice(ind, 1)
                 }
-                if(!this.$refs.arkanyear.value) {
+                if (!this.$refs.arkanyear.value) {
                     this.$refs.arkanyear.classList.add('err')
                     err.push('arkanyear')
-                }else{
+                } else {
                     this.$refs.arkanyear.classList.remove('err')
                     const ind = err.indexOf('arkanyear')
-                    err.slice(ind,1)
+                    err.slice(ind, 1)
                 }
-                if(err.length===0){
+                if (err.length === 0) {
                     this.map = {
-                        one: this.getTarot(this.check((this.arkanMounth()+this.arkanYear()) +this.first()) ),
-                        two: this.getTarot(this.check((this.arkanMounth()+this.arkanYear()) +this.two()) ),
-                        three: this.getTarot(this.check((this.arkanMounth()+this.arkanYear()) +this.three()) ),
-                        fore: this.getTarot(this.check((this.arkanMounth()+this.arkanYear()) +this.fore()) ),
-                        five: this.getTarot(this.check((this.arkanMounth()+this.arkanYear()) +this.five()) ),
-                        sixs: this.getTarot(this.check((this.arkanMounth()+this.arkanYear()) +this.sixs()) ),
-                        seven: this.getTarot(this.check((this.arkanMounth()+this.arkanYear()) +this.seven()) ),
-                        ethe: this.getTarot(this.check((this.arkanMounth()+this.arkanYear()) +this.ethe()) ),
-                        nine: this.getTarot(this.check((this.arkanMounth()+this.arkanYear()) +this.nine()) ),
-                        ten: this.getTarot(this.check((this.arkanMounth()+this.arkanYear()) +this.ten()) ),
-                        ileven: this.getTarot(this.check((this.arkanMounth()+this.arkanYear()) +this.ileven()) ),
-                        tvelf: this.getTarot(this.check((this.arkanMounth()+this.arkanYear()) +this.tvelf()) ),
-                        therten: this.getTarot(this.check((this.arkanMounth()+this.arkanYear()) +this.therten()) ),
-                        foreten: this.getTarot(this.check((this.arkanMounth()+this.arkanYear()) +this.foreten()) ),
-                        fiften:  this.getTarot(this.check((this.arkanMounth()+this.arkanYear()) +this.fiften()) ),
-                        sixten: this.getTarot(this.check((this.arkanMounth()+this.arkanYear()) +this.sixten()) ),
-                        seventen: this.getTarot(this.check((this.arkanMounth()+this.arkanYear()) +this.seventen()) ),
-                        eten: this.getTarot(this.check((this.arkanMounth()+this.arkanYear()) +this.eten()) ),
-                        A: this.getTarot(this.check((this.arkanMounth()+this.arkanYear()) +this.A()) ),
-                        B: this.getTarot(this.check((this.arkanMounth()+this.arkanYear()) +this.B()) ),
-                        C: this.getTarot(this.check((this.arkanMounth()+this.arkanYear()) +this.C()) ),
-                        D: this.getTarot(this.check((this.arkanMounth()+this.arkanYear()) +this.D()) ),
-                        E: this.getTarot(this.check((this.arkanMounth()+this.arkanYear()) +this.E()) ),
-                        F: this.getTarot(this.check((this.arkanMounth()+this.arkanYear()) +this.F()) ),
+                        one: this.getTarot(this.check((this.arkanMounth() + this.arkanYear()) + this.first())),
+                        two: this.getTarot(this.check((this.arkanMounth() + this.arkanYear()) + this.two())),
+                        three: this.getTarot(this.check((this.arkanMounth() + this.arkanYear()) + this.three())),
+                        fore: this.getTarot(this.check((this.arkanMounth() + this.arkanYear()) + this.fore())),
+                        five: this.getTarot(this.check((this.arkanMounth() + this.arkanYear()) + this.five())),
+                        sixs: this.getTarot(this.check((this.arkanMounth() + this.arkanYear()) + this.sixs())),
+                        seven: this.getTarot(this.check((this.arkanMounth() + this.arkanYear()) + this.seven())),
+                        ethe: this.getTarot(this.check((this.arkanMounth() + this.arkanYear()) + this.ethe())),
+                        nine: this.getTarot(this.check((this.arkanMounth() + this.arkanYear()) + this.nine())),
+                        ten: this.getTarot(this.check((this.arkanMounth() + this.arkanYear()) + this.ten())),
+                        ileven: this.getTarot(this.check((this.arkanMounth() + this.arkanYear()) + this.ileven())),
+                        tvelf: this.getTarot(this.check((this.arkanMounth() + this.arkanYear()) + this.tvelf())),
+                        therten: this.getTarot(this.check((this.arkanMounth() + this.arkanYear()) + this.therten())),
+                        foreten: this.getTarot(this.check((this.arkanMounth() + this.arkanYear()) + this.foreten())),
+                        fiften: this.getTarot(this.check((this.arkanMounth() + this.arkanYear()) + this.fiften())),
+                        sixten: this.getTarot(this.check((this.arkanMounth() + this.arkanYear()) + this.sixten())),
+                        seventen: this.getTarot(this.check((this.arkanMounth() + this.arkanYear()) + this.seventen())),
+                        eten: this.getTarot(this.check((this.arkanMounth() + this.arkanYear()) + this.eten())),
+                        A: this.getTarot(this.check((this.arkanMounth() + this.arkanYear()) + this.A())),
+                        B: this.getTarot(this.check((this.arkanMounth() + this.arkanYear()) + this.B())),
+                        C: this.getTarot(this.check((this.arkanMounth() + this.arkanYear()) + this.C())),
+                        D: this.getTarot(this.check((this.arkanMounth() + this.arkanYear()) + this.D())),
+                        E: this.getTarot(this.check((this.arkanMounth() + this.arkanYear()) + this.E())),
+                        F: this.getTarot(this.check((this.arkanMounth() + this.arkanYear()) + this.F())),
                     }
                 }
 
