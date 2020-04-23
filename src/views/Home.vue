@@ -2,7 +2,7 @@
   <div id="app" class="container">
     <div class="wrap">
       <h2>Введите дату рождения</h2>
-      <div class="flex">
+      <div class="grid">
         <div class="input_group">
           <span>День</span>
           <input type="number" :min="1" :max="31" ref="onedays" @change="inputCheck($event,'onedays')">
@@ -17,9 +17,10 @@
         </div>
       </div>
       <button @click="calculate">Рассчитать</button>
+      <span class="onHover" @click="short =! short">{{shortText()}}</span>
     </div>
     <transition name="fade">
-      <tarotMaps :maps="map" v-if="map!==null"/>
+      <tarotMaps :maps="map" v-if="map!==null" :short="short"/>
     </transition>
 
   </div>
@@ -32,9 +33,17 @@
         name: 'App',
         components: {tarotMaps},
         data: () => ({
-            map: null
+            map: null,
+            short: false
         }),
         methods: {
+            shortText(){
+                if(this.short){
+                    return 'Полный портрет'
+                }else{
+                    return 'Сокращенный портрет'
+                }
+            },
             inputCheck(e,target){
                 if (Number(e.target.value) < Number(e.target.min)) {
                     this.$refs[target].value = Number(e.target.min)
@@ -204,62 +213,3 @@
     }
 </script>
 
-<style scoped lang="sass">
-  @import '../sass/vars'
-  *
-    margin: 0
-    padding: 0
-    box-sizing: border-box
-  html
-    background-color: $first
-  button
-    border: 1px solid transparent
-    margin: 10px 0
-    border-radius: 5px
-    background-color: $fore
-    color: $first
-    height: 40px
-    min-width: 220px
-    outline: $fore
-    &:disabled
-      background-color: $second
-      color: $five
-      &:hover
-        background-color: $second
-        color: $five
-        cursor: not-allowed
-        border: 1px solid transparent
-    &:hover
-      background-color: $first
-      color: $fore
-      border: 1px solid $fore
-      cursor: pointer
-  .flex
-    display: grid
-    grid-template-columns: repeat(3, minmax(60px, 1fr))
-    grid-gap: 10px
-  #app
-    h2
-      color: $fore
-    .wrap
-      display: grid
-      justify-content: center
-      align-items: center
-  .input_group
-    span
-      display: block
-    input
-      height: 40px
-      max-width: 100px
-      font-size: 20px
-      text-align: center
-      border-radius: 5px
-      border: 1px solid $five
-      &.err
-        border: 2px solid red
-  .fade-enter-active, .fade-leave-active
-    transition: opacity .5s
-  .fade-enter, .fade-leave-to
-    opacity: 0
-
-</style>

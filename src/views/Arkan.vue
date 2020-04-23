@@ -1,10 +1,10 @@
 <template>
   <div id="app" class="container" >
     <div class="wrap">
-      <div class="grid">
+      <div class="flex">
         <div style="margin: 0 10px;">
           <h2>Введите дату рождения</h2>
-          <div class="flex">
+          <div class="grid">
             <div class="input_group">
               <span>День</span>
               <input type="number" :min="1" :max="31" ref="bday" @change="inputCheck($event,'bday')" @keyup.enter="calculate">
@@ -22,7 +22,7 @@
 
         <div style="margin: 0 10px;">
           <h2>Дату прогноза</h2>
-          <div class="flex">
+          <div class="grid">
             <div class="input_group">
               <span>Месяц</span>
               <input type="number" :min="0" :max="12" ref="arkanmounth" @change="inputCheck($event,'arkanmounth')" @keyup.enter="calculate">
@@ -248,99 +248,3 @@
         },
     }
 </script>
-
-<style scoped lang="sass">
-  @import '../sass/vars'
-  *
-    margin: 0
-    padding: 0
-    box-sizing: border-box
-
-  html
-    background-color: $first
-
-  .onHover
-    cursor: pointer
-
-  .border
-    border-radius: 5px
-    border: 1px solid $five
-
-  button
-    border: 1px solid transparent
-    margin: 10px 0
-    border-radius: 5px
-    background-color: $fore
-    color: $first
-    height: 40px
-    min-width: 220px
-    outline: $fore
-    &:disabled
-      background-color: $second
-      color: $five
-      &:hover
-        background-color: $second
-        color: $five
-        cursor: not-allowed
-        border: 1px solid transparent
-    &:hover
-      background-color: $first
-      color: $fore
-      border: 1px solid $fore
-      cursor: pointer
-
-  .horScroller
-    width: 100vw
-    overflow-x: scroll
-
-  .grid
-    display: grid
-    grid-template-columns: repeat(2, minmax(140px, 1fr))
-    grid-gap: 10px
-
-  .flex
-    display: flex
-    flex-wrap: nowrap
-    justify-content: center
-
-  #app
-    h2
-      color: $fore
-    .wrap
-      display: grid
-      justify-content: center
-      align-items: center
-
-  .input_group
-    span
-      display: block
-    input
-      height: 40px
-      width: 100px
-      font-size: 20px
-      text-align: center
-      border-radius: 5px
-      border: 1px solid $five
-      &.err
-        border: 2px solid red
-  .dubleMaps
-    display: grid
-    grid-template-columns: repeat(2, minmax(50px, 1fr))
-    grid-template-areas: "firstmap secondmap" "dublemap dublemap"
-    grid-gap: 20px
-    overflow-x: scroll
-    min-width: 600px
-    div:nth-child(1)
-      grid-area: firstmap
-    div:nth-child(2)
-      grid-area: secondmap
-    div:nth-child(3)
-      grid-area: dublemap
-
-  .fade-enter-active, .fade-leave-active
-    transition: opacity .5s
-
-  .fade-enter, .fade-leave-to
-    opacity: 0
-
-</style>
