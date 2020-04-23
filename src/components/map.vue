@@ -101,19 +101,8 @@
         display: grid
         max-width: 100vw
         &.short
-            grid-template-columns: repeat(5, minmax(180px, 1fr))
-            grid-template-rows: repeat(4, minmax(250px, 1fr))
-            grid-template-areas:  "one . two . three " ". fore . five . " ". . sixs . . " "seventen . ethe . seven "
             .eten,.sixten,.seventen,.ileven,.fiften,.nine,.ten,.sixten,.seventen,.A,.B,.C,.D,.E,.F
                 display: none
-            &.noimg
-                grid-template-columns: repeat(5, minmax(40px, 40px))
-                grid-template-rows: repeat(4, minmax(40px, 40px))
-                grid-gap: 5px
-        &.noimg
-            grid-template-columns: repeat(7, minmax(40px, 40px))
-            grid-template-rows: repeat(9, minmax(40px, 40px))
-            grid-gap: 5px
         .ileven
             grid-area: ileven
         .fiften

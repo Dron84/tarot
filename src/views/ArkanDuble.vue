@@ -62,15 +62,15 @@
         <div class="horScroller">
             <transition name="fade">
                 <div class="dubleMaps" v-if="map!==null&&map2!==null&&dubleMap!==null">
-                    <div class="border">
+                    <div class="border firstmap">
                         <h3>1 человек</h3>
                         <tarotMaps :maps="map" :short="short" :showCard="cards"/>
                     </div>
-                    <div class="border">
+                    <div class="border secondmap">
                         <h3>2 человек</h3>
                         <tarotMaps :maps="map2" :short="short" :showCard="cards"/>
                     </div>
-                    <div class="border">
+                    <div class="border dublemap">
                         <h3>Парный портрет</h3>
                         <tarotMaps :maps="dubleMap" :short="short" :showCard="cards"/>
                     </div>

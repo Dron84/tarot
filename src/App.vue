@@ -62,7 +62,7 @@
   .border
     border-radius: 5px
     border: 1px solid $five
-    padding: 0 0 0 30px
+    padding: 0 30px 0 30px
 
   button
     border: 1px solid transparent
@@ -98,6 +98,7 @@
     grid-gap: 10px
   .simple_grid
     display: grid
+    justify-content: center
   .flex
     display: flex
     flex-wrap: wrap
@@ -128,21 +129,19 @@
     grid-template-columns: repeat(2, minmax(50px, 1fr))
     grid-template-areas: "firstmap secondmap" "dublemap dublemap"
     grid-gap: 20px
-    overflow-x: scroll
-    min-width: 750px
-    div:nth-child(1)
+    width: max-content
+    .firstmap
       grid-area: firstmap
-    div:nth-child(2)
+      display: grid
+      justify-content: center
+    .secondmap
       grid-area: secondmap
-    div:nth-child(3)
+      display: grid
+      justify-content: center
+    .dublemap
       grid-area: dublemap
       display: grid
       justify-content: center
-      grid-template-areas: "headers" "dublemaps"
-      h3
-        grid-area: headers
-      .maps
-        grid-area: dublemaps
 
   .fade-enter-active, .fade-leave-active
     transition: opacity .5s
