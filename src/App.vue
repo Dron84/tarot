@@ -149,6 +149,8 @@
   .fade-enter, .fade-leave-to
     opacity: 0
 
+  .checkbox-component
+    margin: 10px !important
   .checkbox-component > input + label > .input-box
     position: relative !important
     border: 1px solid $five !important
