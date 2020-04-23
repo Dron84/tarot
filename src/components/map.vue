@@ -59,7 +59,7 @@
     .maps
         display: grid
         max-width: 100vw
-        grid-template-areas:  "fiften . . . ileven . . . eten ." ". . . nine . ten . . . ." ". therten line line line line line foreten . ." ". . one . two . three . seven ." ". . . fore . five . . . ." ". . . . sixs . tvelf . ethe ." "sixten . seventen . . . . . . ." "line2 line2 line2 line2 line2 line2 line2 line2 line2 line2" ". . . . A . . . . ." ". . . B . C . . . ." ". . D . E . F . . ."
+        grid-template-areas:  "fiften . . . ileven . . . eten " ". . . nine . ten . . . " ". therten line line line line line foreten . " ". . one . two . three . seven " ". . . fore . five . . . " ". . . . sixs . tvelf . ethe " "sixten . seventen . . . . . . " "line2 line2 line2 line2 line2 line2 line2 line2 line2 " ". . . . A . . . . " ". . . B . C . . . " ". . D . E . F . . "
         &.short
             grid-template-areas:  " one . two . three . seven " " . fore . five . . . " " . . sixs . tvelf . ethe "
             .eten,.ileven,.fiften,.nine,.ten,.A,.B,.C,.D,.E,.F,.tvelf,.therten,.foreten,.line,.line2,.sixten,.seventen
@@ -123,7 +123,7 @@
             grid-area: F
     @media screen and (min-width: 1201px)
         .maps
-            grid-template-columns: repeat(10, minmax(180px, 1fr))
+            grid-template-columns: repeat(9, minmax(180px, 1fr))
             grid-template-rows: repeat(11, minmax(250px, 1fr))
             grid-gap: 10px
             &.short
@@ -134,12 +134,12 @@
                     grid-template-rows: repeat(3, minmax(40px, 40px))
                     grid-gap: 5px
             &.noimg
-                grid-template-columns: repeat(10, minmax(40px, 40px))
+                grid-template-columns: repeat(9, minmax(40px, 40px))
                 grid-template-rows: repeat(11, minmax(40px, 40px))
                 grid-gap: 5px
     @media screen and (max-width: 1200px)
         .maps
-            grid-template-columns: repeat(10, minmax(100px, 1fr))
+            grid-template-columns: repeat(9, minmax(100px, 1fr))
             grid-template-rows: repeat(11, minmax(200px, 1fr))
             grid-gap: 10px
             &.short
@@ -150,12 +150,12 @@
                     grid-template-rows: repeat(3, minmax(40px, 40px))
                     grid-gap: 5px
             &.noimg
-                grid-template-columns: repeat(10, minmax(40px, 40px))
+                grid-template-columns: repeat(9, minmax(40px, 40px))
                 grid-template-rows: repeat(11, minmax(40px, 40px))
                 grid-gap: 5px
     @media screen and (max-width: 800px)
         .maps
-            grid-template-columns: repeat(10, minmax(50px, 1fr))
+            grid-template-columns: repeat(9, minmax(50px, 1fr))
             grid-template-rows: repeat(11, minmax(100px, 1fr))
             grid-gap: 10px
             &.short
@@ -166,12 +166,12 @@
                     grid-template-rows: repeat(3, minmax(40px, 40px))
                     grid-gap: 5px
             &.noimg
-                grid-template-columns: repeat(10, minmax(40px, 40px))
+                grid-template-columns: repeat(9, minmax(40px, 40px))
                 grid-template-rows: repeat(11, minmax(40px, 40px))
                 grid-gap: 5px
     @media screen and (max-width: 500px)
         .maps
-            grid-template-columns: repeat(10, minmax(35px, 1fr))
+            grid-template-columns: repeat(9, minmax(35px, 1fr))
             grid-template-rows: repeat(11, minmax(60px, 1fr))
             grid-gap: 10px
             &.short
@@ -182,7 +182,7 @@
                     grid-template-rows: repeat(3, minmax(40px, 40px))
                     grid-gap: 5px
             &.noimg
-                grid-template-columns: repeat(10, minmax(40px, 40px))
+                grid-template-columns: repeat(9, minmax(40px, 40px))
                 grid-template-rows: repeat(11, minmax(40px, 40px))
                 grid-gap: 5px
 
