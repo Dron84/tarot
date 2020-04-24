@@ -60,7 +60,7 @@
                 <checkbox name="cards" value="1" v-model="cards"> Карты</checkbox>
             </div>
         </div>
-        <div class="horScroller">
+        <div class="horScroller" style="margin-bottom: 70px; margin-top: 40px;">
             <transition name="fade">
                 <div class="simple_grid">
                     <div class="dubleMaps" v-if="map!==null&&map2!==null&&dubleMap!==null">

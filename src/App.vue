@@ -34,6 +34,7 @@
     color: $fore
     max-width: 99vw
     max-height: 99vh
+    margin-bottom: 60px
 
   #nav
     padding: 30px
@@ -89,8 +90,8 @@
       cursor: pointer
 
   .horScroller
-    width: 100vw
-    overflow-x: scroll
+    display: block
+    width: 100%
 
   .grid
     display: grid
@@ -179,4 +180,7 @@
       border-color: $five !important
       transform: translateX(0.6em) !important
 
+  @media screen and (max-width: 1200px)
+    .border
+      padding: 0 20px
 </style>

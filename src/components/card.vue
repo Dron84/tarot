@@ -1,6 +1,6 @@
 <template>
     <div class="card" :class="{'short' : !showCard}" @click="modal = !modal" :style="cardShow">
-        <span class="number">{{caption}}</span>
+        <span class="number">№ {{caption}}</span>
         <!--<img :src="imgsrc" :alt="rim_number">-->
         <span class="rim_number">{{rim_number}}</span>
         <transition name="fade">
@@ -52,7 +52,6 @@
         background-position: center
         border-radius: 10px
         border: 1px solid $five
-        overflow: hidden
         width: 100%
         position: relative
         transition: all .4s ease-in-out
@@ -61,12 +60,23 @@
             cursor: pointer
             outline: $five
             &::after
-                background-color: transparent
-            span
-                background-color: $three
+                content: ''
+                display: block
+                width: 100%
+                height: 100%
+                top: 0
+                left: 0
+                bottom: 0
+                right: 0
+                background-color: $five
         &.short
             height: $short_height
             width: $short_width
+            span
+                &.number
+                    top: 0
+                &.rim_number
+                    bottom: 0
         span
             position: absolute
             text-align: center
@@ -75,9 +85,9 @@
             width: 100%
             transition: all .4s ease-in-out
             &.number
-                top: 0
+                top: -30px
             &.rim_number
-                bottom: 0
+                bottom: -30px
 
     .modal
         position: fixed

@@ -27,7 +27,7 @@
             </div>
 
             <transition name="fade">
-                <tarotMaps :maps="map" v-if="map!==null" :short="short" :showCard="cards"/>
+                <tarotMaps :maps="map" v-if="map!==null" :short="short" :showCard="cards" style="margin-top: 40px; margin-bottom: 70px;"/>
             </transition>
 
         </div>

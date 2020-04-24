@@ -131,29 +131,29 @@
                 grid-template-columns: repeat(7, minmax(180px, 1fr))
                 grid-template-rows: repeat(3, minmax(250px, 1fr))
                 &.noimg
-                    grid-template-columns: repeat(7, minmax($short_width, $short_width))
+                    grid-template-columns: repeat(7, minmax($short_map_width, .5fr))
 
-                    grid-template-rows: repeat(3, minmax($short_height, $short_height))
+                    grid-template-rows: repeat(3, minmax($short_map_height, .5fr))
                     grid-gap: 5px
             &.noimg
-                grid-template-columns: repeat(9, minmax($short_width, $short_width))
-                grid-template-rows: repeat(11, minmax($short_height, $short_height))
+                grid-template-columns: repeat(9, minmax($short_map_width, .5fr))
+                grid-template-rows: repeat(11, minmax($short_map_height, .5fr))
                 grid-gap: 5px
     @media screen and (max-width: 1200px)
         .maps
-            grid-template-columns: repeat(9, minmax(100px, 1fr))
+            grid-template-columns: repeat(9, minmax(90px, 1fr))
             grid-template-rows: repeat(11, minmax(200px, 1fr))
             grid-gap: 10px
             &.short
                 grid-template-columns: repeat(7, minmax(100px, 1fr))
                 grid-template-rows: repeat(3, minmax(200px, 1fr))
                 &.noimg
-                    grid-template-columns: repeat(7, minmax($short_width, $short_width))
-                    grid-template-rows: repeat(3, minmax($short_height, $short_height))
+                    grid-template-columns: repeat(7, minmax($short_map_width, .5fr))
+                    grid-template-rows: repeat(3, minmax($short_map_height, .5fr))
                     grid-gap: 5px
             &.noimg
-                grid-template-columns: repeat(9, minmax($short_width, $short_width))
-                grid-template-rows: repeat(11, minmax($short_height, $short_height))
+                grid-template-columns: repeat(9, minmax($short_map_width, .5fr))
+                grid-template-rows: repeat(11, minmax($short_map_height, .5fr))
                 grid-gap: 5px
 
     @media screen and (max-width: 800px)

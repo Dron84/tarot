@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build",
+    "rok": "ngrok http 8080 -host-header='localhost:8080'"
   },
   "dependencies": {
     "core-js": "^3.6.4",
@@ -18,6 +19,7 @@
     "@vue/cli-plugin-router": "~4.3.0",
     "@vue/cli-plugin-vuex": "~4.3.0",
     "@vue/cli-service": "~4.3.0",
+    "ngrok": "^3.2.7",
     "sass": "^1.26.3",
     "sass-loader": "^8.0.2",
     "vue-template-compiler": "^2.6.11"
