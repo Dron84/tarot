@@ -41,6 +41,7 @@
 
 <style lang="sass">
     @import "../sass/vars"
+
     .card
         display: grid
         justify-content: center
@@ -50,20 +51,12 @@
         background-size: cover
         background-position: center
         border-radius: 10px
+        border: 1px solid $five
         overflow: hidden
         width: 100%
         position: relative
         transition: all .4s ease-in-out
-        &::after
-            content: ''
-            position: absolute
-            display: block
-            top: 0
-            left: 0
-            width: 100%
-            height: 100%
-            background-color: rgba($five,.4)
-            transition: all .4s ease-in-out
+        font-size: 20px
         &:hover
             cursor: pointer
             outline: $five
@@ -72,8 +65,8 @@
             span
                 background-color: $three
         &.short
-            height: 40px
-            width: 40px
+            height: $short_height
+            width: $short_width
         span
             position: absolute
             text-align: center
@@ -94,7 +87,7 @@
         right: 0
         width: 100vw
         height: 100vh
-        background-color: $three
+        background-color: rgba($three,.9)
         display: grid
         justify-content: center
         align-items: center
@@ -107,9 +100,11 @@
             align-items: center
             position: relative
             span
+                background-color: transparent !important
                 display: block
                 text-align: center
                 color: $five
+                font-size: 30px
                 &.modal__number
                     top: 0
                 &.modal__rim_number

@@ -126,17 +126,18 @@
         .maps
             grid-template-columns: repeat(9, minmax(180px, 1fr))
             grid-template-rows: repeat(11, minmax(250px, 1fr))
-            grid-gap: 10px
+            grid-gap: 20px
             &.short
                 grid-template-columns: repeat(7, minmax(180px, 1fr))
                 grid-template-rows: repeat(3, minmax(250px, 1fr))
                 &.noimg
-                    grid-template-columns: repeat(7, minmax(40px, 40px))
-                    grid-template-rows: repeat(3, minmax(40px, 40px))
+                    grid-template-columns: repeat(7, minmax($short_width, $short_width))
+
+                    grid-template-rows: repeat(3, minmax($short_height, $short_height))
                     grid-gap: 5px
             &.noimg
-                grid-template-columns: repeat(9, minmax(40px, 40px))
-                grid-template-rows: repeat(11, minmax(40px, 40px))
+                grid-template-columns: repeat(9, minmax($short_width, $short_width))
+                grid-template-rows: repeat(11, minmax($short_height, $short_height))
                 grid-gap: 5px
     @media screen and (max-width: 1200px)
         .maps
@@ -147,13 +148,14 @@
                 grid-template-columns: repeat(7, minmax(100px, 1fr))
                 grid-template-rows: repeat(3, minmax(200px, 1fr))
                 &.noimg
-                    grid-template-columns: repeat(7, minmax(40px, 40px))
-                    grid-template-rows: repeat(3, minmax(40px, 40px))
+                    grid-template-columns: repeat(7, minmax($short_width, $short_width))
+                    grid-template-rows: repeat(3, minmax($short_height, $short_height))
                     grid-gap: 5px
             &.noimg
-                grid-template-columns: repeat(9, minmax(40px, 40px))
-                grid-template-rows: repeat(11, minmax(40px, 40px))
+                grid-template-columns: repeat(9, minmax($short_width, $short_width))
+                grid-template-rows: repeat(11, minmax($short_height, $short_height))
                 grid-gap: 5px
+
     @media screen and (max-width: 800px)
         .maps
             grid-template-columns: repeat(9, minmax(50px, 1fr))
@@ -162,14 +164,6 @@
             &.short
                 grid-template-columns: repeat(7, minmax(50px, 1fr))
                 grid-template-rows: repeat(3, minmax(100px, 1fr))
-                &.noimg
-                    grid-template-columns: repeat(7, minmax(40px, 40px))
-                    grid-template-rows: repeat(3, minmax(40px, 40px))
-                    grid-gap: 5px
-            &.noimg
-                grid-template-columns: repeat(9, minmax(40px, 40px))
-                grid-template-rows: repeat(11, minmax(40px, 40px))
-                grid-gap: 5px
     @media screen and (max-width: 500px)
         .maps
             grid-template-columns: repeat(9, minmax(35px, 1fr))
@@ -178,13 +172,5 @@
             &.short
                 grid-template-columns: repeat(7, minmax(35px, 1fr))
                 grid-template-rows: repeat(3, minmax(60px, 1fr))
-                &.noimg
-                    grid-template-columns: repeat(7, minmax(40px, 40px))
-                    grid-template-rows: repeat(3, minmax(40px, 40px))
-                    grid-gap: 5px
-            &.noimg
-                grid-template-columns: repeat(9, minmax(40px, 40px))
-                grid-template-rows: repeat(11, minmax(40px, 40px))
-                grid-gap: 5px
 
 </style>
