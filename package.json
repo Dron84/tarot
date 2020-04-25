@@ -5,7 +5,9 @@
   "scripts": {
     "start": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "rok": "ngrok http 8080 -host-header='localhost:8080'"
+    "rok": "ngrok http 8080 -host-header='localhost:8080'",
+    "dev": "vue-cli-service build && nw dist/",
+    "prod": "nwbuild --platforms win64,osx64,linux64 --buildDir dist/"
   },
   "dependencies": {
     "core-js": "^3.6.4",
@@ -20,6 +22,8 @@
     "@vue/cli-plugin-vuex": "~4.3.0",
     "@vue/cli-service": "~4.3.0",
     "ngrok": "^3.2.7",
+    "nw": "^0.43.4-sdk",
+    "nw-builder": "^3.5.7",
     "sass": "^1.26.3",
     "sass-loader": "^8.0.2",
     "vue-template-compiler": "^2.6.11"

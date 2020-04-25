@@ -72,14 +72,20 @@
                         return Number(n)
                     }
                 }
-                if (num > 0) {
-                    return c(num)
-                } else if (num < 0) {
-                    return c(num * -1)
+                if (Number(num) > 0) {
+                    return c(Number(num))
+                } else if (Number(num) < 0) {
+                    return c(Number(num) * -1)
+                }else if(Number(num)===0){
+                    return 22
                 }
             },
             getTarot(num) {
-                return this.$store.getters.tarot[num - 1]
+                if(num===0){
+                    return this.$store.getters.tarot[22]
+                }else{
+                    return this.$store.getters.tarot[num - 1]
+                }
             },
             first() {
                 return Number(this.check(this.$refs.onedays.value))
