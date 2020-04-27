@@ -84,6 +84,7 @@
             display: block
             width: 100%
             transition: all .4s ease-in-out
+            white-space: nowrap
             &.number
                 top: -30px
             &.rim_number
@@ -130,15 +131,15 @@
         opacity: 0
     @media screen and (min-width: 1201px)
         .card
-            height: 250px
+            height: 150px
     @media screen and (max-width: 1200px)
         .card
-            height: 200px
+            height: 120px
     @media screen and (max-width: 800px)
         .card
-            height: 100px
+            height: 80px
     @media screen and (max-width: 500px)
         .card
-            height: 60px
+            height: 50px
 
 </style>

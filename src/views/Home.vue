@@ -1,5 +1,6 @@
 <template>
-    <div id="app" class="container">
+    <div class="container">
+        <h1>{{$route.meta.title}}</h1>
         <div class="wrap">
             <h2>Введите дату рождения</h2>
             <div class="grid">
@@ -226,6 +227,9 @@
                 }
             },
         },
+        created(){
+            // console.log('$route.params',this.)
+        }
     }
 </script>
 

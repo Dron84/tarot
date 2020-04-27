@@ -26,7 +26,7 @@
   html
     background-color: $first
 
-  #app
+  .container
     font-family: Avenir, Helvetica, Arial, sans-serif
     -webkit-font-smoothing: antialiased
     -moz-osx-font-smoothing: grayscale
@@ -35,6 +35,8 @@
     max-width: 99vw
     max-height: 99vh
     margin-bottom: 60px
+    h1
+      margin: 20px 0
 
   #nav
     padding: 30px

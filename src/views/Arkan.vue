@@ -1,5 +1,6 @@
 <template>
-    <div id="app" class="container">
+    <div class="container">
+        <h1>{{$route.meta.title}}</h1>
         <div class="wrap">
             <div class="flex">
                 <div style="margin: 0 10px;">
