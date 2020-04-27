@@ -6,7 +6,7 @@
                     <h2>Дата 1</h2>
                     <div class="input_group">
                         <span>имя/название</span>
-                        <input type="text" placeholder="имя/название">
+                        <input type="text" placeholder="имя/название" v-model="data1">
                     </div>
                     <div class="grid">
                         <div class="input_group">
@@ -31,7 +31,7 @@
                     <h2>Дата 2</h2>
                     <div class="input_group">
                         <span>имя/название</span>
-                        <input type="text" placeholder="имя/название">
+                        <input type="text" placeholder="имя/название" v-model="data2">
                     </div>
 
                     <div class="grid">
@@ -65,11 +65,11 @@
                 <div class="simple_grid">
                     <div class="dubleMaps" v-if="map!==null&&map2!==null&&dubleMap!==null">
                         <div class="border firstmap">
-                            <h3>1 человек</h3>
+                            <h3>1 человек <br>{{data1}}</h3>
                             <tarotMaps :maps="map" :short="short" :showCard="cards"/>
                         </div>
                         <div class="border secondmap">
-                            <h3>2 человек</h3>
+                            <h3>2 человек <br>{{data2}}</h3>
                             <tarotMaps :maps="map2" :short="short" :showCard="cards"/>
                         </div>
                         <div class="border dublemap">
@@ -96,6 +96,8 @@
             dubleMap: null,
             short: true,
             cards: false,
+            data1: '',
+            data2: '',
         }),
         methods: {
             shortText() {

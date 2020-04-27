@@ -141,6 +141,11 @@
             seven(days, mounth, year) {
                 return this.check(this.first(days, mounth, year) + this.five(days, mounth, year))
             },
+            sevenDuble(arkanDays, arkanMounth, arkanYear,days, mounth, year) {
+                const one = this.first(days, mounth, year) + this.five(days, mounth, year)
+                const two = this.first(arkanDays, arkanMounth, arkanYear) + this.five(arkanDays, arkanMounth, arkanYear)
+                return this.check(one+two)
+            },
             ethe(days, mounth, year) {
                 return this.check(this.two(days, mounth, year) + this.sixs(days, mounth, year))
             },
@@ -190,7 +195,7 @@
                 return this.check(this.nine(days, mounth, year) + this.ten(days, mounth, year) + this.ileven(days, mounth, year) - this.seven(days, mounth, year))
             },
             fiftenDuble(arkanDays, arkanMounth, arkanYear,days, mounth, year) {
-                return this.check(this.nineDuble(arkanDays, arkanMounth, arkanYear,days, mounth, year) + this.tenDuble(arkanDays, arkanMounth, arkanYear,days, mounth, year) + this.ilevenDuble(arkanDays, arkanMounth, arkanYear,days, mounth, year) - (this.seven(arkanDays, arkanMounth, arkanYear) + this.seven(days, mounth, year) ))
+                return this.check(this.nineDuble(arkanDays, arkanMounth, arkanYear,days, mounth, year) + this.tenDuble(arkanDays, arkanMounth, arkanYear,days, mounth, year) + this.ilevenDuble(arkanDays, arkanMounth, arkanYear,days, mounth, year) - (this.sevenDuble(arkanDays, arkanMounth, arkanYear, days, mounth, year) ))
             },
             sixten(days, mounth, year) {
                 return this.check((this.first(days, mounth, year) + this.fore(days, mounth, year)) + (this.five(days, mounth, year) + this.three(days, mounth, year)))

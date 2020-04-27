@@ -127,6 +127,7 @@
             grid-template-columns: repeat(9, minmax(180px, 1fr))
             grid-template-rows: repeat(11, minmax(250px, 1fr))
             grid-gap: 20px
+            margin: 40px 0 70px 0
             &.short
                 grid-template-columns: repeat(7, minmax(180px, 1fr))
                 grid-template-rows: repeat(3, minmax(250px, 1fr))
@@ -144,6 +145,7 @@
             grid-template-columns: repeat(9, minmax(90px, 1fr))
             grid-template-rows: repeat(11, minmax(200px, 1fr))
             grid-gap: 10px
+            margin: 40px 0 70px 0
             &.short
                 grid-template-columns: repeat(7, minmax(100px, 1fr))
                 grid-template-rows: repeat(3, minmax(200px, 1fr))

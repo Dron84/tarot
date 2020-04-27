@@ -39,23 +39,23 @@
   #nav
     padding: 30px
     display: grid
-    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr) )
     justify-content: center
     a
       font-weight: bold
       color: $fore
       text-decoration: none
       position: relative
-      margin: 0 30px 0 0
       white-space: nowrap
+      padding: 10px 20px
+      border-radius: 7px
+      border: 1px solid $five
+      margin: 5px
+      &:hover
+        background-color: rgba($five,.1)
       &.router-link-exact-active
         color: $five
         text-decoration: underline
-      &::after
-        content: "|"
-        position: absolute
-        top: 0
-        right: -15px
+        background-color: rgba($five,.1)
 
   .onHover
     cursor: pointer
