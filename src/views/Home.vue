@@ -26,11 +26,11 @@
                 <span class="onHover" @click="short =! short">{{shortText()}}</span>
                 <checkbox name="cards" value="1" v-model="cards" checked> Карты</checkbox>
             </div>
-
+        </div>
+        <div class="wrap">
             <transition name="fade">
                 <tarotMaps :maps="map" v-if="map!==null" :short="short" :showCard="cards" style="margin-top: 40px; margin-bottom: 70px;"/>
             </transition>
-
         </div>
     </div>
 </template>

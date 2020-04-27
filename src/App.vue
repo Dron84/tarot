@@ -125,6 +125,8 @@
       text-align: center
       border-radius: 5px
       border: 1px solid $five
+      &[type='number']
+        max-width: 60px
       &.err
         border: 2px solid red
   .dubleMaps
