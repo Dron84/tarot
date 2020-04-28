@@ -1,10 +1,9 @@
 <template>
-    <div>
-    <div class="card" :class="{'short' : !showCard}" @click="modal = !modal" :style="cardShow">
+    <div >
+    <div class="card" :class="getClasses" @click="modal = !modal" :style="cardShow" @mouseover="hoverCard = true" @mouseleave="hoverCard = false">
         <span class="number">№ {{caption}}</span>
         <!--<img :src="imgsrc" :alt="rim_number">-->
         <span class="rim_number">{{rim_number}}</span>
-
     </div>
     <transition name="fade">
         <div class="modal" v-if="modal" @click="modal = !modal">
@@ -22,7 +21,8 @@
     export default {
         name: "card",
         data: ()=>({
-            modal: false
+            modal: false,
+            hoverCard: false,
         }),
         props:{
             showCard: {type: Boolean, default: true},
@@ -30,7 +30,20 @@
             imgsrc: {type: String,required: true},
             rim_number: {type: String,required: true},
         },
+        methods:{
+
+        },
         computed:{
+            getClasses(){
+                let result = ''
+                if(!this.showCard){
+                    result = result +' short '
+                }
+                if(this.hoverCard){
+                    result = result +' hover '
+                }
+                return result
+            },
             cardShow(){
                 if(this.showCard===true){
                     return `background-image: url('${this.imgsrc}');`
@@ -59,6 +72,12 @@
         position: relative
         transition: all .4s ease-in-out
         font-size: 20px
+        &.hover
+            transform: scale(5)
+            z-index: 99999
+            transition: all 1s ease-in-out
+            span
+                opacity: 0
         &:hover
             cursor: pointer
             outline: $five
@@ -86,8 +105,9 @@
             color: $five
             display: block
             width: 100%
-            transition: all .4s ease-in-out
+            transition: all 1s ease-in-out
             white-space: nowrap
+            opacity: 1
             &.number
                 top: -30px
             &.rim_number

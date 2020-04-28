@@ -61,6 +61,7 @@
         max-width: 100vw
         grid-template-areas:  "fiften . . . ileven . . . eten " ". . . nine . ten . . . " ". therten line line line line line foreten . " ". . one . two . three . seven " ". . . fore . five . . . " ". . . . sixs . tvelf . ethe " "seventen . sixten. . . . . . " "line2 line2 line2 line2 line2 line2 line2 line2 line2 " ". . . . A . . . . " ". . . B . C . . . " ". . D . E . F . . "
         margin-bottom: 40px
+        position: relative
         &.short
             grid-template-areas:  " one . two . three . seven " " . fore . five . . . " " . . sixs . tvelf . ethe "
             .eten,.ileven,.fiften,.nine,.ten,.A,.B,.C,.D,.E,.F,.tvelf,.therten,.foreten,.line,.line2,.sixten,.seventen

@@ -18,16 +18,19 @@
 </script>
 <style lang="sass">
   @import "sass/vars"
+  @import url('https://fonts.googleapis.com/css?family=Manrope&display=swap')
   *
     margin: 0
     padding: 0
     box-sizing: border-box
+    font-family: 'Manrope', sans-serif
 
   html
     background-color: $first
+    font-family: 'Manrope', sans-serif
 
   .container
-    font-family: Avenir, Helvetica, Arial, sans-serif
+    font-family: 'Manrope', sans-serif
     -webkit-font-smoothing: antialiased
     -moz-osx-font-smoothing: grayscale
     text-align: center
