@@ -124,13 +124,13 @@
             grid-area: F
     @media screen and (min-width: 1201px)
         .maps
-            grid-template-columns: repeat(9, minmax(100px, 1fr))
-            grid-template-rows: repeat(11, minmax(100px, 1fr))
+            grid-template-columns: repeat(9, minmax(35px, 1fr))
+            grid-template-rows: repeat(11, minmax(55px, 1fr))
             grid-gap: 20px
             margin: 40px 0 70px 0
             &.short
-                grid-template-columns: repeat(7, minmax(100px, 1fr))
-                grid-template-rows: repeat(3, minmax(100px, 1fr))
+                grid-template-columns: repeat(7, minmax(35px, 1fr))
+                grid-template-rows: repeat(3, minmax(55px, 1fr))
                 &.noimg
                     grid-template-columns: repeat(7, minmax($short_map_width, .5fr))
 
@@ -142,13 +142,13 @@
                 grid-gap: 5px
     @media screen and (max-width: 1200px)
         .maps
-            grid-template-columns: repeat(9, minmax(80px, 1fr))
-            grid-template-rows: repeat(11, minmax(60px, 1fr))
+            grid-template-columns: repeat(9, minmax(35px, 1fr))
+            grid-template-rows: repeat(11, minmax(55px, 1fr))
             grid-gap: 10px
             margin: 40px 0 70px 0
             &.short
-                grid-template-columns: repeat(7, minmax(80px, 1fr))
-                grid-template-rows: repeat(3, minmax(60px, 1fr))
+                grid-template-columns: repeat(7, minmax(35px, 1fr))
+                grid-template-rows: repeat(3, minmax(55px, 1fr))
                 &.noimg
                     grid-template-columns: repeat(7, minmax($short_map_width, .5fr))
                     grid-template-rows: repeat(3, minmax($short_map_height, .5fr))

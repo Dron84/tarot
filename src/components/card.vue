@@ -1,17 +1,20 @@
 <template>
+    <div>
     <div class="card" :class="{'short' : !showCard}" @click="modal = !modal" :style="cardShow">
         <span class="number">№ {{caption}}</span>
         <!--<img :src="imgsrc" :alt="rim_number">-->
         <span class="rim_number">{{rim_number}}</span>
-        <transition name="fade">
-            <div class="modal" v-if="modal">
-                <div class="wrapper">
-                    <span class="modal__number">{{caption}}</span>
-                    <img class="modal__img" :src="imgsrc" :alt="rim_number">
-                    <span class="modal__rim_number">{{rim_number}}</span>
-                </div>
+
+    </div>
+    <transition name="fade">
+        <div class="modal" v-if="modal" @click="modal = !modal">
+            <div class="wrapper">
+                <span class="modal__number">{{caption}}</span>
+                <img class="modal__img" :src="imgsrc" :alt="rim_number">
+                <span class="modal__rim_number">{{rim_number}}</span>
             </div>
-        </transition>
+        </div>
+    </transition>
     </div>
 </template>
 
@@ -104,7 +107,7 @@
         align-items: center
         z-index: 10000
         .wrapper
-            display: flex
+            display: grid
             width: auto
             height: 100%
             justify-content: center
@@ -129,17 +132,13 @@
 
     .fade-enter, .fade-leave-to
         opacity: 0
+
+
     @media screen and (min-width: 1201px)
         .card
-            height: 150px
+            height: 55px
     @media screen and (max-width: 1200px)
         .card
-            height: 120px
-    @media screen and (max-width: 800px)
-        .card
-            height: 80px
-    @media screen and (max-width: 500px)
-        .card
-            height: 50px
+            height: 55px
 
 </style>

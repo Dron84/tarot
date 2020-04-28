@@ -4,7 +4,7 @@
         <div class="wrap">
             <div class="flex">
                 <div style="margin: 0 10px;">
-                    <h2>Введите дату рождения</h2>
+                    <h2 style="width: 290px">Дата</h2>
                     <div class="grid">
                         <div class="input_group">
                             <span>День*</span>
