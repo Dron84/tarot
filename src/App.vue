@@ -18,43 +18,49 @@
 </script>
 <style lang="sass">
   @import "sass/vars"
+  @import url('https://fonts.googleapis.com/css?family=Manrope&display=swap')
   *
     margin: 0
     padding: 0
     box-sizing: border-box
+    font-family: 'Manrope', sans-serif
 
   html
     background-color: $first
+    font-family: 'Manrope', sans-serif
 
-  #app
-    font-family: Avenir, Helvetica, Arial, sans-serif
+  .container
+    font-family: 'Manrope', sans-serif
     -webkit-font-smoothing: antialiased
     -moz-osx-font-smoothing: grayscale
     text-align: center
     color: $fore
     max-width: 99vw
     max-height: 99vh
+    margin-bottom: 60px
+    h1
+      margin: 20px 0
 
   #nav
     padding: 30px
     display: grid
-    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr) )
     justify-content: center
     a
       font-weight: bold
       color: $fore
       text-decoration: none
       position: relative
-      margin: 0 30px 0 0
       white-space: nowrap
+      padding: 10px 20px
+      border-radius: 7px
+      border: 1px solid $five
+      margin: 5px
+      &:hover
+        background-color: rgba($five,.1)
       &.router-link-exact-active
         color: $five
         text-decoration: underline
-      &::after
-        content: "|"
-        position: absolute
-        top: 0
-        right: -15px
+        background-color: rgba($five,.1)
 
   .onHover
     cursor: pointer
@@ -89,8 +95,8 @@
       cursor: pointer
 
   .horScroller
-    width: 100vw
-    overflow-x: scroll
+    display: block
+    width: 100%
 
   .grid
     display: grid
@@ -122,6 +128,8 @@
       text-align: center
       border-radius: 5px
       border: 1px solid $five
+      &[type='number']
+        max-width: 60px
       &.err
         border: 2px solid red
   .dubleMaps
@@ -179,4 +187,7 @@
       border-color: $five !important
       transform: translateX(0.6em) !important
 
+  @media screen and (max-width: 1200px)
+    .border
+      padding: 0 20px
 </style>

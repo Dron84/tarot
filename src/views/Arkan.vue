@@ -1,26 +1,30 @@
 <template>
-    <div id="app" class="container">
+    <div class="container">
+        <h1>{{$route.meta.title}}</h1>
         <div class="wrap">
             <div class="flex">
                 <div style="margin: 0 10px;">
-                    <h2>Введите дату рождения</h2>
+                    <h2 style="width: 290px">Дата</h2>
                     <div class="grid">
                         <div class="input_group">
                             <span>День*</span>
                             <input type="number" :min="1" :max="31" ref="bday" placeholder="XX"
                                    @change="inputCheck($event,'bday')"
-                                   @keyup.enter="calculate">
+                                   @keyup.enter="calculate"
+                            >
                         </div>
                         <div class="input_group">
                             <span>Месяц*</span>
                             <input type="number" :min="1" :max="12" ref="bmounth" placeholder="XX"
                                    @change="inputCheck($event,'bmounth')"
-                                   @keyup.enter="calculate">
+                                   @keyup.enter="calculate"
+                            >
                         </div>
                         <div class="input_group">
                             <span>Год*</span>
                             <input type="number" :min="1900" :max="2030" ref="byear" placeholder="XXXX"
-                                   @change="inputCheck($event,'byear')" @keyup.enter="calculate">
+                                   @change="inputCheck($event,'byear')" @keyup.enter="calculate"
+                            >
                         </div>
                     </div>
                 </div>
@@ -29,14 +33,22 @@
                     <h2>Cрок прогноза</h2>
                     <div class="grid">
                         <div class="input_group">
+                            <span>День</span>
+                            <input type="number" :min="0" :max="31" ref="arkandays" placeholder="XX"
+                                   @change="inputCheck($event,'arkandays')" @keyup.enter="calculate"
+                            >
+                        </div>
+                        <div class="input_group">
                             <span>Месяц</span>
                             <input type="number" :min="0" :max="12" ref="arkanmounth" placeholder="XX"
-                                   @change="inputCheck($event,'arkanmounth')" @keyup.enter="calculate">
+                                   @change="inputCheck($event,'arkanmounth')" @keyup.enter="calculate"
+                            >
                         </div>
                         <div class="input_group">
                             <span>Год*</span>
                             <input type="number" :min="1900" :max="2030" ref="arkanyear" placeholder="XXXX"
-                                   @change="inputCheck($event,'arkanyear')" @keyup.enter="calculate">
+                                   @change="inputCheck($event,'arkanyear')" @keyup.enter="calculate"
+                                   >
                         </div>
                     </div>
                 </div>
@@ -50,7 +62,7 @@
 
             <transition name="fade">
                 <div class="simple_grid">
-                    <tarotMaps :maps="map" v-if="map!==null" :short="short" :showCard="cards"/>
+                    <tarotMaps :maps="map" v-if="map!==null" :short="short" :showCard="cards" style="margin-top: 30px; margin-bottom: 70px;"/>
                 </div>
             </transition>
         </div>
@@ -72,9 +84,9 @@
         methods: {
             shortText() {
                 if (this.short) {
-                    return 'Полный прогноз'
+                    return 'Полный портрет'
                 } else {
-                    return 'Сокращенный прогноз'
+                    return 'Сокращенный портрет'
                 }
             },
             inputCheck(e, target) {
@@ -86,114 +98,144 @@
             },
             check(num) {
                 const c = (n) => {
-                    if (n > 22) {
-                        while (n > 22) {
-                            n = n - 22
+                    if (Number(n) > 22) {
+                        while (Number(n) > 22) {
+                            n = Number(n) - 22
                         }
                         return Number(n)
                     } else if (n > 0 && n <= 22) {
                         return Number(n)
                     }
                 }
-                if (num > 0) {
-                    return c(num)
-                } else if (num < 0) {
-                    return c(num * -1)
+                if (Number(num) > 0) {
+                    return c(Number(num))
+                } else if (Number(num) < 0) {
+                    return c(Number(num) * -1)
+                }else if(Number(num)===0){
+                    return 22
                 }
             },
             getTarot(num) {
                 return this.$store.getters.tarot[num - 1]
             },
-            arkanMounth() {
-                return Number(this.$refs.arkanmounth.value)
+            first(days, mounth, year) {
+                if(days === ''){
+                    return 0
+                }else{
+                    return this.check(Number(days))
+                }
             },
-            arkanYear() {
-                const d = this.$refs.arkanyear.value
-                let sum = Number(d[0]) + Number(d[1]) + Number(d[2]) + Number(d[3])
+            two(days, mounth, year) {
+                if(mounth === ''){
+                    return 0
+                }else{
+                    return Number(mounth)
+                }
+            },
+            three(days, mounth, year) {
+                let sum = Number(year[0]) + Number(year[1]) + Number(year[2]) + Number(year[3])
                 return Number(this.check(sum))
             },
-            first() {
-                return Number(this.check(this.$refs.bday.value))
+            fore(days, mounth, year) {
+                return this.check(this.first(days, mounth, year) + this.two(days, mounth, year))
             },
-            two() {
-                return Number(this.$refs.bmounth.value)
+            five(days, mounth, year) {
+                return this.check(this.two(days, mounth, year) + this.three(days, mounth, year))
             },
-            three() {
-                const d = this.$refs.byear.value
-                let sum = Number(d[0]) + Number(d[1]) + Number(d[2]) + Number(d[3])
-                return Number(this.check(sum))
+            sixs(days, mounth, year) {
+                return this.check(this.fore(days, mounth, year) + this.five(days, mounth, year))
             },
-            fore() {
-                return this.check(this.first() + this.two())
+            seven(days, mounth, year) {
+                return this.check(this.first(days, mounth, year) + this.five(days, mounth, year))
             },
-            five() {
-                return this.check(this.two() + this.three())
+            sevenDuble(arkanDays, arkanMounth, arkanYear,days, mounth, year) {
+                const one = this.first(days, mounth, year) + this.five(days, mounth, year)
+                const two = this.first(arkanDays, arkanMounth, arkanYear) + this.five(arkanDays, arkanMounth, arkanYear)
+                return this.check(one+two)
             },
-            sixs() {
-                return this.check(this.fore() + this.five())
-            },
-            seven() {
-                return this.check(this.first() + this.five())
-            },
-            ethe() {
-                return this.check(this.two() + this.sixs())
+            ethe(days, mounth, year) {
+                return this.check(this.two(days, mounth, year) + this.sixs(days, mounth, year))
             },
             MinMax(first, second) {
                 if (first > second) {
-                    return this.check(first - second)
+                    return (Number(first) - Number(second))
                 } else if (first < second) {
-                    return this.check(second - first)
+                    return (Number(second) - Number(first))
                 } else if (first === second) {
-                    return this.check(22)
+                    return Number(0)
                 }
             },
-            nine() {
-                return this.MinMax(this.first(), this.two())
+            nine(days, mounth, year) {
+                console.log('#9',this.first(days, mounth, year), this.two(days, mounth, year),'=', this.MinMax(this.first(days, mounth, year), this.two(days, mounth, year)))
+                return this.check(this.MinMax(this.first(days, mounth, year), this.two(days, mounth, year)))
             },
-            ten() {
-                return this.MinMax(this.three(), this.two())
+            nineDuble(arkanDays, arkanMounth, arkanYear, days, mounth, year) {
+                const first = this.check(this.first(days, mounth, year) + this.first(arkanDays, arkanMounth, arkanYear))
+                const two = this.check(this.two(days, mounth, year) + this.two(arkanDays, arkanMounth, arkanYear))
+                return this.check(this.MinMax(first,two))
             },
-            ileven() {
-                return this.MinMax(this.nine(), this.ten())
+            ten(days, mounth, year) {
+                console.log('#10',this.three(days, mounth, year), this.two(days, mounth, year),'=', this.MinMax(this.three(days, mounth, year), this.two(days, mounth, year)))
+                return this.check(this.MinMax(this.three(days, mounth, year), this.two(days, mounth, year)))
             },
-            tvelf() {
-                return this.check(this.seven() + this.ethe())
+            tenDuble(arkanDays, arkanMounth, arkanYear,days, mounth, year) {
+                const three = this.check(this.three(days, mounth, year) + this.three(arkanDays, arkanMounth, arkanYear))
+                const two = this.check(this.two(days, mounth, year) + this.two(arkanDays, arkanMounth, arkanYear))
+                return this.check(this.MinMax(three, two))
             },
-            therten() {
-                return this.check(this.first() + this.fore() + this.sixs())
+            ileven(days, mounth, year) {
+                return this.check(this.MinMax(this.nine(days, mounth, year), this.ten(days, mounth, year)))
             },
-            foreten() {
-                return this.check(this.three() + this.five() + this.sixs())
+            ilevenDuble(arkanDays, arkanMounth, arkanYear,days, mounth, year) {
+                return this.check(this.MinMax(this.nineDuble(arkanDays, arkanMounth, arkanYear,days, mounth, year), this.tenDuble(arkanDays, arkanMounth, arkanYear,days, mounth, year)))
             },
-            fiften() {
-                return this.check(this.nine() + this.ten() + this.ileven() - this.seven())
+            tvelf(days, mounth, year) {
+                return this.check(this.seven(days, mounth, year) + this.ethe(days, mounth, year))
             },
-            sixten() {
-                return this.check((this.first() + this.fore()) + (this.five() + this.three()))
+            therten(days, mounth, year) {
+                return this.check(this.first(days, mounth, year) + this.fore(days, mounth, year) + this.sixs(days, mounth, year))
             },
-            seventen() {
-                return this.check(this.ileven() + this.sixs())
+            foreten(days, mounth, year) {
+                return this.check(this.three(days, mounth, year) + this.five(days, mounth, year) + this.sixs(days, mounth, year))
             },
-            eten() {
-                return this.check(this.ileven() + this.ethe())
+            fiften(days, mounth, year) {
+                return this.check(this.nine(days, mounth, year) + this.ten(days, mounth, year) + this.ileven(days, mounth, year) - this.seven(days, mounth, year))
             },
-            A() {
-                return this.check(this.first() + this.fore())
+            fiftenDuble(arkanDays, arkanMounth, arkanYear,days, mounth, year) {
+                return this.check(this.nineDuble(arkanDays, arkanMounth, arkanYear,days, mounth, year) + this.tenDuble(arkanDays, arkanMounth, arkanYear,days, mounth, year) + this.ilevenDuble(arkanDays, arkanMounth, arkanYear,days, mounth, year) - (this.sevenDuble(arkanDays, arkanMounth, arkanYear, days, mounth, year) ))
             },
-            B() {
-                return this.check(this.two() + this.fore())
+            sixten(days, mounth, year) {
+                return this.check((this.first(days, mounth, year) + this.fore(days, mounth, year)) + (this.five(days, mounth, year) + this.three(days, mounth, year)))
             },
-            C() {
-                return this.check(this.two() + this.five())
+            seventen(days, mounth, year) {
+                return this.check(this.ileven(days, mounth, year) + this.sixs(days, mounth, year))
             },
-            D() {
-                return this.check(this.three() + this.five())
+            seventenDuble(arkanDays, arkanMounth, arkanYear, days, mounth, year) {
+                return this.check(this.ilevenDuble(arkanDays, arkanMounth, arkanYear,days, mounth, year) + ( this.sixs(arkanDays, arkanMounth, arkanYear) + this.sixs(days, mounth, year)))
             },
-            E() {
-                return this.check(this.fore() + this.sixs())
+            eten(days, mounth, year) {
+                return this.check(this.ileven(days, mounth, year) + this.ethe(days, mounth, year))
             },
-            F() {
-                return this.check(this.five() + this.sixs())
+            etenDuble(arkanDays, arkanMounth, arkanYear,days, mounth, year) {
+                return this.check(this.ilevenDuble(arkanDays, arkanMounth, arkanYear,days, mounth, year) + (this.ethe(arkanDays, arkanMounth, arkanYear) + this.ethe(days, mounth, year)) )
+            },
+            A(days, mounth, year) {
+                return this.check(this.first(days, mounth, year) + this.fore(days, mounth, year))
+            },
+            B(days, mounth, year) {
+                return this.check(this.two(days, mounth, year) + this.fore(days, mounth, year))
+            },
+            C(days, mounth, year) {
+                return this.check(this.two(days, mounth, year) + this.five(days, mounth, year))
+            },
+            D(days, mounth, year) {
+                return this.check(this.three(days, mounth, year) + this.five(days, mounth, year))
+            },
+            E(days, mounth, year) {
+                return this.check(this.fore(days, mounth, year) + this.sixs(days, mounth, year))
+            },
+            F(days, mounth, year) {
+                return this.check(this.five(days, mounth, year) + this.sixs(days, mounth, year))
             },
             calculate() {
                 let err = []
@@ -221,6 +263,8 @@
                     const ind = err.indexOf('byear')
                     err.slice(ind, 1)
                 }
+
+
                 if (!this.$refs.arkanyear.value) {
                     this.$refs.arkanyear.classList.add('err')
                     err.push('arkanyear')
@@ -229,35 +273,70 @@
                     const ind = err.indexOf('arkanyear')
                     err.slice(ind, 1)
                 }
+
+
                 if (err.length === 0) {
+                    const days = this.$refs.bday.value
+                    const mounth = this.$refs.bmounth.value
+                    const year = this.$refs.byear.value
+
+                    const arkandays = this.$refs.arkandays.value
+                    const arkanmounth = this.$refs.arkanmounth.value
+                    const arkanyear = this.$refs.arkanyear.value
+
+                    const one = this.getTarot(this.check( this.first(arkandays,arkanmounth,arkanyear) + this.first(days, mounth, year) ) )
+                    const two = this.getTarot(this.check( this.two(arkandays,arkanmounth,arkanyear) + this.two(days, mounth, year) ) )
+                    const three = this.getTarot(this.check( this.three(arkandays,arkanmounth,arkanyear) + this.three(days, mounth, year) ) )
+                    const fore = this.getTarot(this.check( this.fore(arkandays,arkanmounth,arkanyear) + this.fore(days, mounth, year) ) )
+                    const five = this.getTarot(this.check( this.five(arkandays,arkanmounth,arkanyear) + this.five(days, mounth, year) ) )
+                    const sixs = this.getTarot(this.check( this.sixs(arkandays,arkanmounth,arkanyear) + this.sixs(days, mounth, year) ) )
+                    const seven = this.getTarot(this.check( this.seven(arkandays,arkanmounth,arkanyear) + this.seven(days, mounth, year) ) )
+                    const ethe = this.getTarot(this.check( this.ethe(arkandays,arkanmounth,arkanyear) + this.ethe(days, mounth, year) ) )
+                    const nine = this.getTarot(this.check( this.nineDuble(arkandays, arkanmounth, arkanyear, days, mounth, year) ) )
+                    const ten = this.getTarot(this.check( this.tenDuble(arkandays, arkanmounth, arkanyear, days, mounth, year) ) )
+                    const ileven = this.getTarot(this.check( this.ilevenDuble(arkandays, arkanmounth, arkanyear, days, mounth, year) ) )
+                    const tvelf = this.getTarot(this.check( this.tvelf(arkandays,arkanmounth,arkanyear) + this.tvelf(days, mounth, year) ) )
+                    const therten = this.getTarot(this.check( this.therten(arkandays,arkanmounth,arkanyear) + this.therten(days, mounth, year) ) )
+                    const foreten = this.getTarot(this.check( this.foreten(arkandays,arkanmounth,arkanyear) + this.foreten(days, mounth, year) ) )
+                    const fiften = this.getTarot(this.check( this.fiftenDuble(arkandays,arkanmounth,arkanyear, days, mounth, year) ) )
+                    const sixten = this.getTarot(this.check( this.sixten(arkandays,arkanmounth,arkanyear) + this.sixten(days, mounth, year) ) )
+                    const seventen = this.getTarot(this.check( this.seventenDuble(arkandays,arkanmounth,arkanyear,days, mounth, year)) )
+                    const eten = this.getTarot(this.check( this.etenDuble(arkandays,arkanmounth,arkanyear, days, mounth, year) ) )
+                    const A = this.getTarot(this.check( this.A(arkandays,arkanmounth,arkanyear) + this.A(days, mounth, year) ) )
+                    const B = this.getTarot(this.check( this.B(arkandays,arkanmounth,arkanyear) + this.B(days, mounth, year) ) )
+                    const C = this.getTarot(this.check( this.C(arkandays,arkanmounth,arkanyear) + this.C(days, mounth, year) ) )
+                    const D = this.getTarot(this.check( this.D(arkandays,arkanmounth,arkanyear) + this.D(days, mounth, year) ) )
+                    const E = this.getTarot(this.check( this.E(arkandays,arkanmounth,arkanyear) + this.E(days, mounth, year) ) )
+                    const F = this.getTarot(this.check( this.F(arkandays,arkanmounth,arkanyear) + this.F(days, mounth, year) ) )
+
+
                     this.map = {
-                        one: this.getTarot(this.check((this.arkanMounth() + this.arkanYear()) + this.first())),
-                        two: this.getTarot(this.check((this.arkanMounth() + this.arkanYear()) + this.two())),
-                        three: this.getTarot(this.check((this.arkanMounth() + this.arkanYear()) + this.three())),
-                        fore: this.getTarot(this.check((this.arkanMounth() + this.arkanYear()) + this.fore())),
-                        five: this.getTarot(this.check((this.arkanMounth() + this.arkanYear()) + this.five())),
-                        sixs: this.getTarot(this.check((this.arkanMounth() + this.arkanYear()) + this.sixs())),
-                        seven: this.getTarot(this.check((this.arkanMounth() + this.arkanYear()) + this.seven())),
-                        ethe: this.getTarot(this.check((this.arkanMounth() + this.arkanYear()) + this.ethe())),
-                        nine: this.getTarot(this.check((this.arkanMounth() + this.arkanYear()) + this.nine())),
-                        ten: this.getTarot(this.check((this.arkanMounth() + this.arkanYear()) + this.ten())),
-                        ileven: this.getTarot(this.check((this.arkanMounth() + this.arkanYear()) + this.ileven())),
-                        tvelf: this.getTarot(this.check((this.arkanMounth() + this.arkanYear()) + this.tvelf())),
-                        therten: this.getTarot(this.check((this.arkanMounth() + this.arkanYear()) + this.therten())),
-                        foreten: this.getTarot(this.check((this.arkanMounth() + this.arkanYear()) + this.foreten())),
-                        fiften: this.getTarot(this.check((this.arkanMounth() + this.arkanYear()) + this.fiften())),
-                        sixten: this.getTarot(this.check((this.arkanMounth() + this.arkanYear()) + this.sixten())),
-                        seventen: this.getTarot(this.check((this.arkanMounth() + this.arkanYear()) + this.seventen())),
-                        eten: this.getTarot(this.check((this.arkanMounth() + this.arkanYear()) + this.eten())),
-                        A: this.getTarot(this.check((this.arkanMounth() + this.arkanYear()) + this.A())),
-                        B: this.getTarot(this.check((this.arkanMounth() + this.arkanYear()) + this.B())),
-                        C: this.getTarot(this.check((this.arkanMounth() + this.arkanYear()) + this.C())),
-                        D: this.getTarot(this.check((this.arkanMounth() + this.arkanYear()) + this.D())),
-                        E: this.getTarot(this.check((this.arkanMounth() + this.arkanYear()) + this.E())),
-                        F: this.getTarot(this.check((this.arkanMounth() + this.arkanYear()) + this.F())),
+                        one,
+                        two,
+                        three,
+                        fore,
+                        five,
+                        sixs,
+                        seven,
+                        ethe,
+                        nine,
+                        ten,
+                        ileven,
+                        tvelf,
+                        therten,
+                        foreten,
+                        fiften,
+                        sixten,
+                        seventen,
+                        eten,
+                        A,
+                        B,
+                        C,
+                        D,
+                        E,
+                        F,
                     }
                 }
-
             },
         },
     }

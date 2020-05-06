@@ -1,7 +1,7 @@
 <template>
     <div class="maps" :class="mapsClass">
         <div class="line"></div>
-        <card class="ileven" caption="11" :imgsrc="maps.ileven.img" :rim_number="maps.ileven.rim" :showCard="showCard" />
+        <card class="ileven" caption="11" :imgsrc="maps.ileven.img" :rim_number="maps.ileven.rim" :showCard="showCard"/>
         <card class="fiften" caption="15" :imgsrc="maps.fiften.img" :rim_number="maps.fiften.rim" :showCard="showCard"/>
         <card class="nine" caption="9" :imgsrc="maps.nine.img" :rim_number="maps.nine.rim" :showCard="showCard"/>
         <card class="ten" caption="10" :imgsrc="maps.ten.img" :rim_number="maps.ten.rim" :showCard="showCard"/>
@@ -34,10 +34,18 @@
     export default {
         name: "map",
         components:{card,},
+        data:()=>({
+            showed: ''
+        }),
         props: {
             showCard: {type: Boolean, default: true},
             short: {type: Boolean, default: true},
             maps: { type: Object, required: true }
+        },
+        methods:{
+            showedCard($event){
+                this.showed = $event
+            }
         },
         computed:{
             mapsClass(){
@@ -61,6 +69,7 @@
         max-width: 100vw
         grid-template-areas:  "fiften . . . ileven . . . eten " ". . . nine . ten . . . " ". therten line line line line line foreten . " ". . one . two . three . seven " ". . . fore . five . . . " ". . . . sixs . tvelf . ethe " "seventen . sixten. . . . . . " "line2 line2 line2 line2 line2 line2 line2 line2 line2 " ". . . . A . . . . " ". . . B . C . . . " ". . D . E . F . . "
         margin-bottom: 40px
+        position: relative
         &.short
             grid-template-areas:  " one . two . three . seven " " . fore . five . . . " " . . sixs . tvelf . ethe "
             .eten,.ileven,.fiften,.nine,.ten,.A,.B,.C,.D,.E,.F,.tvelf,.therten,.foreten,.line,.line2,.sixten,.seventen
@@ -124,53 +133,55 @@
             grid-area: F
     @media screen and (min-width: 1201px)
         .maps
-            grid-template-columns: repeat(9, minmax(180px, 1fr))
-            grid-template-rows: repeat(11, minmax(250px, 1fr))
+            grid-template-columns: repeat(9, minmax(35px, 1fr))
+            grid-template-rows: repeat(11, minmax(55px, 1fr))
             grid-gap: 20px
+            margin: 40px 0 70px 0
             &.short
-                grid-template-columns: repeat(7, minmax(180px, 1fr))
-                grid-template-rows: repeat(3, minmax(250px, 1fr))
+                grid-template-columns: repeat(7, minmax(35px, 1fr))
+                grid-template-rows: repeat(3, minmax(55px, 1fr))
                 &.noimg
-                    grid-template-columns: repeat(7, minmax($short_width, $short_width))
+                    grid-template-columns: repeat(7, minmax($short_map_width, .5fr))
 
-                    grid-template-rows: repeat(3, minmax($short_height, $short_height))
+                    grid-template-rows: repeat(3, minmax($short_map_height, .5fr))
                     grid-gap: 5px
             &.noimg
-                grid-template-columns: repeat(9, minmax($short_width, $short_width))
-                grid-template-rows: repeat(11, minmax($short_height, $short_height))
+                grid-template-columns: repeat(9, minmax($short_map_width, .5fr))
+                grid-template-rows: repeat(11, minmax($short_map_height, .5fr))
                 grid-gap: 5px
     @media screen and (max-width: 1200px)
         .maps
-            grid-template-columns: repeat(9, minmax(100px, 1fr))
-            grid-template-rows: repeat(11, minmax(200px, 1fr))
+            grid-template-columns: repeat(9, minmax(35px, 1fr))
+            grid-template-rows: repeat(11, minmax(55px, 1fr))
             grid-gap: 10px
+            margin: 40px 0 70px 0
             &.short
-                grid-template-columns: repeat(7, minmax(100px, 1fr))
-                grid-template-rows: repeat(3, minmax(200px, 1fr))
+                grid-template-columns: repeat(7, minmax(35px, 1fr))
+                grid-template-rows: repeat(3, minmax(55px, 1fr))
                 &.noimg
-                    grid-template-columns: repeat(7, minmax($short_width, $short_width))
-                    grid-template-rows: repeat(3, minmax($short_height, $short_height))
+                    grid-template-columns: repeat(7, minmax($short_map_width, .5fr))
+                    grid-template-rows: repeat(3, minmax($short_map_height, .5fr))
                     grid-gap: 5px
             &.noimg
-                grid-template-columns: repeat(9, minmax($short_width, $short_width))
-                grid-template-rows: repeat(11, minmax($short_height, $short_height))
+                grid-template-columns: repeat(9, minmax($short_map_width, .5fr))
+                grid-template-rows: repeat(11, minmax($short_map_height, .5fr))
                 grid-gap: 5px
 
     @media screen and (max-width: 800px)
         .maps
             grid-template-columns: repeat(9, minmax(50px, 1fr))
-            grid-template-rows: repeat(11, minmax(100px, 1fr))
+            grid-template-rows: repeat(11, minmax(20px, 1fr))
             grid-gap: 10px
             &.short
                 grid-template-columns: repeat(7, minmax(50px, 1fr))
-                grid-template-rows: repeat(3, minmax(100px, 1fr))
+                grid-template-rows: repeat(3, minmax(20px, 1fr))
     @media screen and (max-width: 500px)
         .maps
-            grid-template-columns: repeat(9, minmax(35px, 1fr))
+            grid-template-columns: repeat(9, minmax(40px, 1fr))
             grid-template-rows: repeat(11, minmax(60px, 1fr))
             grid-gap: 10px
             &.short
-                grid-template-columns: repeat(7, minmax(35px, 1fr))
+                grid-template-columns: repeat(7, minmax(40px, 1fr))
                 grid-template-rows: repeat(3, minmax(60px, 1fr))
 
 </style>

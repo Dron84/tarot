@@ -1,7 +1,8 @@
 <template>
-    <div id="app" class="container">
+    <div class="container">
+        <h1>{{$route.meta.title}}</h1>
         <div class="wrap">
-            <h2>Введите дату рождения</h2>
+            <h2 style="width: 290px">Дата</h2>
             <div class="grid">
                 <div class="input_group">
                     <span>День*</span>
@@ -25,11 +26,11 @@
                 <span class="onHover" @click="short =! short">{{shortText()}}</span>
                 <checkbox name="cards" value="1" v-model="cards" checked> Карты</checkbox>
             </div>
-
+        </div>
+        <div class="wrap">
             <transition name="fade">
-                <tarotMaps :maps="map" v-if="map!==null" :short="short" :showCard="cards"/>
+                <tarotMaps :maps="map" v-if="map!==null" :short="short" :showCard="cards" style="margin-top: 40px; margin-bottom: 70px;"/>
             </transition>
-
         </div>
     </div>
 </template>
@@ -72,14 +73,20 @@
                         return Number(n)
                     }
                 }
-                if (num > 0) {
-                    return c(num)
-                } else if (num < 0) {
-                    return c(num * -1)
+                if (Number(num) > 0) {
+                    return c(Number(num))
+                } else if (Number(num) < 0) {
+                    return c(Number(num) * -1)
+                }else if(Number(num)===0){
+                    return 22
                 }
             },
             getTarot(num) {
-                return this.$store.getters.tarot[num - 1]
+                if(num===0){
+                    return this.$store.getters.tarot[22]
+                }else{
+                    return this.$store.getters.tarot[num - 1]
+                }
             },
             first() {
                 return Number(this.check(this.$refs.onedays.value))
@@ -220,6 +227,9 @@
                 }
             },
         },
+        created(){
+            // console.log('$route.params',this.)
+        }
     }
 </script>
 

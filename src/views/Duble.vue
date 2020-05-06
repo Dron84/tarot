@@ -1,12 +1,13 @@
 <template>
-    <div id="app" class="container">
+    <div class="container">
+        <h1>{{$route.meta.title}}</h1>
         <div class="wrap">
             <div class="flex">
                 <div style="margin: 0 10px;">
                     <h2>Дата 1</h2>
                     <div class="input_group">
                         <span>имя/название</span>
-                        <input type="text" placeholder="имя/название">
+                        <input type="text" placeholder="имя/название" v-model="data1">
                     </div>
                     <div class="grid">
                         <div class="input_group">
@@ -31,7 +32,7 @@
                     <h2>Дата 2</h2>
                     <div class="input_group">
                         <span>имя/название</span>
-                        <input type="text" placeholder="имя/название">
+                        <input type="text" placeholder="имя/название" v-model="data2">
                     </div>
 
                     <div class="grid">
@@ -60,16 +61,16 @@
                 <checkbox name="cards" value="1" v-model="cards"> Карты</checkbox>
             </div>
         </div>
-        <div class="horScroller">
+        <div class="horScroller" style="margin-bottom: 70px; margin-top: 40px;">
             <transition name="fade">
                 <div class="simple_grid">
                     <div class="dubleMaps" v-if="map!==null&&map2!==null&&dubleMap!==null">
                         <div class="border firstmap">
-                            <h3>1 человек</h3>
+                            <h3>Портрет 1<br>{{data1}}</h3>
                             <tarotMaps :maps="map" :short="short" :showCard="cards"/>
                         </div>
                         <div class="border secondmap">
-                            <h3>2 человек</h3>
+                            <h3>Портрет 2<br>{{data2}}</h3>
                             <tarotMaps :maps="map2" :short="short" :showCard="cards"/>
                         </div>
                         <div class="border dublemap">
@@ -96,6 +97,8 @@
             dubleMap: null,
             short: true,
             cards: false,
+            data1: '',
+            data2: '',
         }),
         methods: {
             shortText() {
@@ -127,10 +130,16 @@
                     return c(Number(num))
                 } else if (Number(num) < 0) {
                     return c(Number(num) * -1)
+                }else if(Number(num)===0){
+                    return 22
                 }
             },
             getTarot(num) {
-                return this.$store.getters.tarot[num - 1]
+                if(num===0){
+                    return this.$store.getters.tarot[22]
+                }else{
+                    return this.$store.getters.tarot[num - 1]
+                }
             },
             first(days, mounth, year) {
                 return this.check(Number(days))
