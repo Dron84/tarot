@@ -33,6 +33,12 @@
                     <h2>Cрок прогноза</h2>
                     <div class="grid">
                         <div class="input_group">
+                            <span>День</span>
+                            <input type="number" :min="0" :max="31" ref="arkandays" placeholder="XX"
+                                   @change="inputCheck($event,'arkandays')" @keyup.enter="calculate"
+                            >
+                        </div>
+                        <div class="input_group">
                             <span>Месяц</span>
                             <input type="number" :min="0" :max="12" ref="arkanmounth" placeholder="XX"
                                    @change="inputCheck($event,'arkanmounth')" @keyup.enter="calculate"
@@ -274,7 +280,7 @@
                     const mounth = this.$refs.bmounth.value
                     const year = this.$refs.byear.value
 
-                    const arkandays = ''
+                    const arkandays = this.$refs.arkandays.value
                     const arkanmounth = this.$refs.arkanmounth.value
                     const arkanyear = this.$refs.arkanyear.value
 

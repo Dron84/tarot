@@ -66,11 +66,11 @@
                 <div class="simple_grid">
                     <div class="dubleMaps" v-if="map!==null&&map2!==null&&dubleMap!==null">
                         <div class="border firstmap">
-                            <h3>1 человек <br>{{data1}}</h3>
+                            <h3>Портрет 1<br>{{data1}}</h3>
                             <tarotMaps :maps="map" :short="short" :showCard="cards"/>
                         </div>
                         <div class="border secondmap">
-                            <h3>2 человек <br>{{data2}}</h3>
+                            <h3>Портрет 2<br>{{data2}}</h3>
                             <tarotMaps :maps="map2" :short="short" :showCard="cards"/>
                         </div>
                         <div class="border dublemap">

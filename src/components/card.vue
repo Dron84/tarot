@@ -1,19 +1,19 @@
 <template>
     <div >
-    <div class="card" :class="getClasses" @click="modal = !modal" :style="cardShow" @mouseover="hoverCard = true" @mouseleave="hoverCard = false">
+    <div class="card" :class="getClasses" @click="show" :style="cardShow">
         <span class="number">№ {{caption}}</span>
         <!--<img :src="imgsrc" :alt="rim_number">-->
         <span class="rim_number">{{rim_number}}</span>
     </div>
-    <transition name="fade">
-        <div class="modal" v-if="modal" @click="modal = !modal">
-            <div class="wrapper">
-                <span class="modal__number">{{caption}}</span>
-                <img class="modal__img" :src="imgsrc" :alt="rim_number">
-                <span class="modal__rim_number">{{rim_number}}</span>
-            </div>
-        </div>
-    </transition>
+    <!--<transition name="fade">-->
+        <!--<div class="modal" v-if="modal" @click="modal = !modal">-->
+            <!--<div class="wrapper">-->
+                <!--<span class="modal__number">{{caption}}</span>-->
+                <!--<img class="modal__img" :src="imgsrc" :alt="rim_number">-->
+                <!--<span class="modal__rim_number">{{rim_number}}</span>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</transition>-->
     </div>
 </template>
 
@@ -31,7 +31,9 @@
             rim_number: {type: String,required: true},
         },
         methods:{
-
+            show(){
+                this.hoverCard = !this.hoverCard
+            }
         },
         computed:{
             getClasses(){
@@ -39,7 +41,7 @@
                 if(!this.showCard){
                     result = result +' short '
                 }
-                if(this.hoverCard){
+                if(this.hoverCard && !this.elseCard){
                     result = result +' hover '
                 }
                 return result

@@ -1,7 +1,7 @@
 <template>
     <div class="maps" :class="mapsClass">
         <div class="line"></div>
-        <card class="ileven" caption="11" :imgsrc="maps.ileven.img" :rim_number="maps.ileven.rim" :showCard="showCard" />
+        <card class="ileven" caption="11" :imgsrc="maps.ileven.img" :rim_number="maps.ileven.rim" :showCard="showCard"/>
         <card class="fiften" caption="15" :imgsrc="maps.fiften.img" :rim_number="maps.fiften.rim" :showCard="showCard"/>
         <card class="nine" caption="9" :imgsrc="maps.nine.img" :rim_number="maps.nine.rim" :showCard="showCard"/>
         <card class="ten" caption="10" :imgsrc="maps.ten.img" :rim_number="maps.ten.rim" :showCard="showCard"/>
@@ -34,10 +34,18 @@
     export default {
         name: "map",
         components:{card,},
+        data:()=>({
+            showed: ''
+        }),
         props: {
             showCard: {type: Boolean, default: true},
             short: {type: Boolean, default: true},
             maps: { type: Object, required: true }
+        },
+        methods:{
+            showedCard($event){
+                this.showed = $event
+            }
         },
         computed:{
             mapsClass(){

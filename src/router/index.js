@@ -13,22 +13,22 @@ const routes = [
         component: Home
     },
     {
-        path: '/duble',
-        name: 'Duble',
+        path: '/doubleportret',
+        name: 'doubleportret',
         title: 'Парный портрет',
         meta:{title: 'Парный портрет',},
         component: () => import(/* webpackChunkName: "about" */ '../views/Duble.vue')
     },
     {
-        path: '/arkan',
-        name: 'arkan',
+        path: '/prognoz',
+        name: 'prognoz',
         title: 'Индивидуальный прогноз на месяц / год',
         meta: {title: 'Индивидуальный прогноз на месяц / год',},
         component: () => import(/* webpackChunkName: "about" */ '../views/Arkan.vue')
     },
     {
-        path: '/arkanduble',
-        name: 'arkanduble',
+        path: '/prognozdouble',
+        name: 'prognozdouble',
         title: 'Парный прогноз на месяц / год',
         meta: {title: 'Парный прогноз на месяц / год',},
         component: () => import(/* webpackChunkName: "about" */ '../views/ArkanDuble.vue')
