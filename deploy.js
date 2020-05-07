@@ -24,7 +24,10 @@ const config = {
 // use with promises
 ftpDeploy
     .deploy(config)
-    .then(res => console.log("finished:", res))
+    .then(res => {
+        console.log("finished:", res)
+        process.exit(-1);
+    })
     .catch(err => console.log(err));
 
 // use with callback
