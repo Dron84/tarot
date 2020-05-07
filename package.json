@@ -8,7 +8,8 @@
     "rok": "ngrok http 8080 -host-header='localhost:8080'",
     "dev": "vue-cli-service build && nw dist/",
     "prod": "nwbuild --platforms win64,osx64,linux64 --buildDir dist/",
-    "deploy": "vue-cli-service build && node deploy"
+    "deploy": "node deploy",
+    "b&d": "vue-cli-service build && node deploy"
   },
   "dependencies": {
     "core-js": "^3.6.4",
