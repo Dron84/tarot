@@ -27,8 +27,8 @@ const routes = [
         component: () => import(/* webpackChunkName: "about" */ '../views/Arkan.vue')
     },
     {
-        path: '/prognozdouble',
-        name: 'prognozdouble',
+        path: '/doubleprognoz',
+        name: 'doubleprognoz',
         title: 'Парный прогноз на день / месяц / год',
         meta: {title: 'Парный прогноз на день / месяц / год',},
         component: () => import(/* webpackChunkName: "about" */ '../views/ArkanDuble.vue')
