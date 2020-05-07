@@ -26,7 +26,7 @@ ftpDeploy
     .deploy(config)
     .then(res => {
         console.log("finished:", res)
-        process.exit(-1);
+        process.exit(0);
     })
     .catch(err => console.log(err));
 
