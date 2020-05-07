@@ -15,8 +15,8 @@ const routes = [
     {
         path: '/doubleportret',
         name: 'doubleportret',
-        title: 'Парный портрет',
-        meta:{title: 'Парный портрет',},
+        title: 'Парный портрет (композит)',
+        meta:{title: 'Парный портрет (композит)',},
         component: () => import(/* webpackChunkName: "about" */ '../views/Duble.vue')
     },
     {

@@ -1,7 +1,7 @@
 <template>
     <footer>
         <div>
-        <p>таронумерологический расчет по методу "психологический портрет" А. Хшановской.</p>
+        <p>на данном сайте представлены калькуляторы для облегчения таронумерологических расчетов<br>по методу "психологический портрет" А. Хшановской.</p>
         <p>По всем вопросам:
             <a href="https://www.instagram.com/wowsuperlife/" target="_blank">
                 <svg viewBox="0 0 511 511.9" xmlns="http://www.w3.org/2000/svg">
@@ -17,7 +17,7 @@
                 </svg>
             </a>
         </p>
-        <p>Ваша Анастасия Воздух</p>
+        <p>С любовью и уважением, ваша Анастасия Воздух</p>
         </div>
         <div class="author">Создатель: <a href="//uniquesite.ru" target="_blank">uniquesite.ru</a></div>
     </footer>
@@ -38,6 +38,7 @@
         display: block
         bottom: 0
         font-family: 'Manrope', sans-serif
+        font-size: 18px
         color: $second
         background-color: rgba($fore,.9)
         text-align: center

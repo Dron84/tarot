@@ -17,7 +17,7 @@ const config = {
     // exclude: ["dist/**/*.map", "node_modules/**", "node_modules/**/.*", ".git/**"],
     // delete ALL existing files at destination before uploading, if true
     deleteRemote: true,
-    // Passive mode is forced (EPSV command is not sent)
+    // Passive mode is forced (EPSV comxmand is not sent)
     forcePasv: true
 };
 
