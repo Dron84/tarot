@@ -7,7 +7,8 @@
     "build": "vue-cli-service build",
     "rok": "ngrok http 8080 -host-header='localhost:8080'",
     "dev": "vue-cli-service build && nw dist/",
-    "prod": "nwbuild --platforms win64,osx64,linux64 --buildDir dist/"
+    "prod": "nwbuild --platforms win64,osx64,linux64 --buildDir dist/",
+    "deploy": "vue-cli-service build && node deploy"
   },
   "dependencies": {
     "core-js": "^3.6.4",
@@ -21,6 +22,8 @@
     "@vue/cli-plugin-router": "~4.3.0",
     "@vue/cli-plugin-vuex": "~4.3.0",
     "@vue/cli-service": "~4.3.0",
+    "dotenv": "^8.2.0",
+    "ftp-deploy": "^2.3.7",
     "ngrok": "^3.2.7",
     "nw": "^0.43.4-sdk",
     "nw-builder": "^3.5.7",

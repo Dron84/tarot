@@ -49,7 +49,7 @@
                     </div>
                 </div>
 
-                <div style="margin: 0 10px;">
+                <div style="margin: 0 10px; width: 290px">
                     <h2>Cрок прогноза</h2>
                     <div class="grid">
                         <div class="input_group">

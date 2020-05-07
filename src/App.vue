@@ -4,10 +4,13 @@
       <router-link class="nav-link" :to="link.path" v-for="link in links" :key="link.path">{{link.title}}</router-link>
     </div>
     <router-view/>
+    <foot />
   </div>
 </template>
 <script>
+  import foot from './components/footers'
   export default {
+      components:{foot},
       data:()=>({
           links: [],
       }),
