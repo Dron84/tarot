@@ -19,7 +19,7 @@
         </p>
         <p>Ваша Анастасия Воздух</p>
         </div>
-        <div class="author"><a href="//uniquesite.ru" target="_blank">uniquesite.ru</a></div>
+        <div class="author">Создатель: <a href="//uniquesite.ru" target="_blank">uniquesite.ru</a></div>
     </footer>
 </template>
 
