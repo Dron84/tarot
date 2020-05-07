@@ -22,15 +22,15 @@ const routes = [
     {
         path: '/prognoz',
         name: 'prognoz',
-        title: 'Индивидуальный прогноз на месяц / год',
-        meta: {title: 'Индивидуальный прогноз на месяц / год',},
+        title: 'Индивидуальный прогноз на день / месяц / год',
+        meta: {title: 'Индивидуальный прогноз на день / месяц / год',},
         component: () => import(/* webpackChunkName: "about" */ '../views/Arkan.vue')
     },
     {
         path: '/prognozdouble',
         name: 'prognozdouble',
-        title: 'Парный прогноз на месяц / год',
-        meta: {title: 'Парный прогноз на месяц / год',},
+        title: 'Парный прогноз на день / месяц / год',
+        meta: {title: 'Парный прогноз на день / месяц / год',},
         component: () => import(/* webpackChunkName: "about" */ '../views/ArkanDuble.vue')
     }
 ]
