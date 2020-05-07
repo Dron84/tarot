@@ -1,5 +1,6 @@
 <template>
     <footer>
+        <div>
         <p>таронумерологический расчет по методу "психологический портрет" А. Хшановской.</p>
         <p>По всем вопросам:
             <a href="https://www.instagram.com/wowsuperlife/" target="_blank">
@@ -17,6 +18,8 @@
             </a>
         </p>
         <p>Ваша Анастасия Воздух</p>
+        </div>
+        <div class="author">Создатель: <a href="//uniquesite.ru" target="_blank">uniquesite.ru</a></div>
     </footer>
 </template>
 
@@ -54,4 +57,9 @@
                 svg
                     path
                         fill: $five
+    .author
+        position: absolute
+        right: 30px
+        top: 38%
+        font-size: 13px
 </style>
