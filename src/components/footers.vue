@@ -5,6 +5,8 @@
                 <br>для облегчения таронумерологических расчетов
                 <br>по методу "психологический портрет" А. Хшановской.
             </p>
+
+            <p>Ваша Анастасия Воздух</p>
             <div class="social">
                 <div class="social_title">По всем вопросам:</div>
                 <a href="https://www.instagram.com/wowsuperlife/" target="_blank">
@@ -14,7 +16,6 @@
                     <img src="img/mail.svg" alt="mail to">
                 </a>
             </div>
-            <p>С любовью и уважением, ваша Анастасия Воздух</p>
         </div>
 
         <div class="author">Создатель: <a href="//uniquesite.ru" target="_blank">uniquesite.ru</a></div>
