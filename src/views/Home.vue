@@ -32,16 +32,17 @@
                 <tarotMaps :maps="map" v-if="map!==null" :short="short" :showCard="cards" style="margin-top: 40px; margin-bottom: 70px;"/>
             </transition>
         </div>
+        <foot />
     </div>
 </template>
 
 <script>
     import tarotMaps from '../components/map'
     import {Checkbox} from 'vue-checkbox-radio';
-
+    import foot from '../components/footers'
     export default {
         name: 'App',
-        components: {tarotMaps, Checkbox},
+        components: {tarotMaps, Checkbox,foot},
         data: () => ({
             map: null,
             short: true,
@@ -172,6 +173,9 @@
                 return this.check(this.five() + this.sixs())
             },
             calculate() {
+                this.map = null
+                this.short = true
+                this.cards = false
                 let err = []
                 if (!this.$refs.onedays.value) {
                     this.$refs.onedays.classList.add('err')

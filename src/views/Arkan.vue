@@ -66,16 +66,18 @@
                 </div>
             </transition>
         </div>
+        <foot />
     </div>
 </template>
 
 <script>
     import tarotMaps from '../components/map'
-    import {Checkbox} from 'vue-checkbox-radio';
+    import {Checkbox} from 'vue-checkbox-radio'
+    import foot from '../components/footers'
 
     export default {
         name: 'App',
-        components: {tarotMaps, Checkbox},
+        components: {tarotMaps, Checkbox,foot},
         data: () => ({
             map: null,
             short: true,

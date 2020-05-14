@@ -81,16 +81,18 @@
                 </div>
             </transition>
         </div>
+        <foot />
     </div>
 </template>
 
 <script>
     import tarotMaps from '../components/map'
     import {Checkbox} from 'vue-checkbox-radio';
+    import foot from '../components/footers'
 
     export default {
         name: 'App',
-        components: {tarotMaps, Checkbox},
+        components: {tarotMaps, Checkbox,foot},
         data: () => ({
             map: null,
             map2: null,
@@ -204,6 +206,33 @@
             },
             eten(days, mounth, year) {
                 return this.check(this.ileven(days, mounth, year) + this.ethe(days, mounth, year))
+            },
+            sevenDuble(arkanDays, arkanMounth, arkanYear,days, mounth, year) {
+                const one = this.first(days, mounth, year) + this.five(days, mounth, year)
+                const two = this.first(arkanDays, arkanMounth, arkanYear) + this.five(arkanDays, arkanMounth, arkanYear)
+                return this.check(one+two)
+            },
+            nineDuble(arkanDays, arkanMounth, arkanYear, days, mounth, year) {
+                const first = this.check(this.first(days, mounth, year) + this.first(arkanDays, arkanMounth, arkanYear))
+                const two = this.check(this.two(days, mounth, year) + this.two(arkanDays, arkanMounth, arkanYear))
+                return this.check(this.MinMax(first,two))
+            },
+            tenDuble(arkanDays, arkanMounth, arkanYear,days, mounth, year) {
+                const three = this.check(this.three(days, mounth, year) + this.three(arkanDays, arkanMounth, arkanYear))
+                const two = this.check(this.two(days, mounth, year) + this.two(arkanDays, arkanMounth, arkanYear))
+                return this.check(this.MinMax(three, two))
+            },
+            ilevenDuble(arkanDays, arkanMounth, arkanYear,days, mounth, year) {
+                return this.check(this.MinMax(this.nineDuble(arkanDays, arkanMounth, arkanYear,days, mounth, year), this.tenDuble(arkanDays, arkanMounth, arkanYear,days, mounth, year)))
+            },
+            fiftenDuble(arkanDays, arkanMounth, arkanYear,days, mounth, year) {
+                return this.check(this.nineDuble(arkanDays, arkanMounth, arkanYear,days, mounth, year) + this.tenDuble(arkanDays, arkanMounth, arkanYear,days, mounth, year) + this.ilevenDuble(arkanDays, arkanMounth, arkanYear,days, mounth, year) - (this.sevenDuble(arkanDays, arkanMounth, arkanYear, days, mounth, year) ))
+            },
+            seventenDuble(arkanDays, arkanMounth, arkanYear, days, mounth, year) {
+                return this.check(this.ilevenDuble(arkanDays, arkanMounth, arkanYear,days, mounth, year) + ( this.sixs(arkanDays, arkanMounth, arkanYear) + this.sixs(days, mounth, year)))
+            },
+            etenDuble(arkanDays, arkanMounth, arkanYear,days, mounth, year) {
+                return this.check(this.ilevenDuble(arkanDays, arkanMounth, arkanYear,days, mounth, year) + (this.ethe(arkanDays, arkanMounth, arkanYear) + this.ethe(days, mounth, year)) )
             },
             A(days, mounth, year) {
                 return this.check(this.first(days, mounth, year) + this.fore(days, mounth, year))
@@ -344,18 +373,18 @@
                         fore: this.getTarot(this.check(this.fore(days, mounth, year) + this.fore(days2, mounth2, year2))),
                         five: this.getTarot(this.check(this.five(days, mounth, year) + this.five(days2, mounth2, year2))),
                         sixs: this.getTarot(this.check(this.sixs(days, mounth, year) + this.sixs(days2, mounth2, year2))),
-                        seven: this.getTarot(this.check(this.seven(days, mounth, year) + this.seven(days2, mounth2, year2))),
+                        seven: this.getTarot(this.check(this.sevenDuble(days, mounth, year,days2, mounth2, year2))),
                         ethe: this.getTarot(this.check(this.ethe(days, mounth, year) + this.ethe(days2, mounth2, year2))),
-                        nine: this.getTarot(this.check(this.nine(days, mounth, year) + this.nine(days2, mounth2, year2))),
-                        ten: this.getTarot(this.check(this.ten(days, mounth, year) + this.ten(days2, mounth2, year2))),
-                        ileven: this.getTarot(this.check(this.ileven(days, mounth, year) + this.ileven(days2, mounth2, year2))),
+                        nine: this.getTarot(this.check(this.nineDuble(days, mounth, year, days2, mounth2, year2))),
+                        ten: this.getTarot(this.check(this.tenDuble(days, mounth, year,days2, mounth2, year2))),
+                        ileven: this.getTarot(this.check(this.ilevenDuble(days, mounth, year,days2, mounth2, year2))),
                         tvelf: this.getTarot(this.check(this.tvelf(days, mounth, year) + this.tvelf(days2, mounth2, year2))),
                         therten: this.getTarot(this.check(this.therten(days, mounth, year) + this.therten(days2, mounth2, year2))),
                         foreten: this.getTarot(this.check(this.foreten(days, mounth, year) + this.foreten(days2, mounth2, year2))),
-                        fiften: this.getTarot(this.check(this.fiften(days, mounth, year) + this.fiften(days2, mounth2, year2))),
+                        fiften: this.getTarot(this.check(this.fiftenDuble(days, mounth, year, days2, mounth2, year2))),
                         sixten: this.getTarot(this.check(this.sixten(days, mounth, year) + this.sixten(days2, mounth2, year2))),
-                        seventen: this.getTarot(this.check(this.seventen(days, mounth, year) + this.seventen(days2, mounth2, year2))),
-                        eten: this.getTarot(this.check(this.eten(days, mounth, year) + this.eten(days2, mounth2, year2))),
+                        seventen: this.getTarot(this.check(this.seventenDuble(days, mounth, year, days2, mounth2, year2))),
+                        eten: this.getTarot(this.check(this.etenDuble(days, mounth, year,days2, mounth2, year2))),
                         A: this.getTarot(this.check(this.A(days, mounth, year) + this.A(days2, mounth2, year2))),
                         B: this.getTarot(this.check(this.B(days, mounth, year) + this.B(days2, mounth2, year2))),
                         C: this.getTarot(this.check(this.C(days, mounth, year) + this.C(days2, mounth2, year2))),

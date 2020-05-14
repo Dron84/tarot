@@ -1,18 +1,22 @@
 <template>
     <footer>
         <div>
-            <p>на данном сайте представлены калькуляторы для облегчения таронумерологических расчетов<br>по методу
-                "психологический портрет" А. Хшановской.</p>
-            <p>По всем вопросам:
+            <p>на данном сайте представлены калькуляторы
+                <br>для облегчения таронумерологических расчетов
+                <br>по методу "психологический портрет" А. Хшановской.
+            </p>
+            <div class="social">
+                <div class="social_title">По всем вопросам:</div>
                 <a href="https://www.instagram.com/wowsuperlife/" target="_blank">
                     <img src="img/instagram.svg" alt="instagram logo">
                 </a>
                 <a href="mailto:wowsuperlife@mail.ru">
                     <img src="img/mail.svg" alt="mail to">
                 </a>
-            </p>
+            </div>
             <p>С любовью и уважением, ваша Анастасия Воздух</p>
         </div>
+
         <div class="author">Создатель: <a href="//uniquesite.ru" target="_blank">uniquesite.ru</a></div>
     </footer>
 </template>
@@ -27,10 +31,7 @@
     @import "../sass/vars"
     footer
         padding: 10px
-        position: fixed
         width: 100%
-        display: block
-        bottom: 0
         font-family: 'Manrope', sans-serif
         font-size: 20px
         color: $second
@@ -43,23 +44,11 @@
             img
                 position: relative
                 top: 4px
-                height: 20px
-            svg
-                position: relative
-                top: 4px
-                height: 20px
-                path
-                    fill: $second
-
+                height: 40px
             &:hover, &:active
                 color: $five
-                svg
-                    path
-                        fill: $five
-
     .author
-        position: absolute
-        right: 30px
-        top: 38%
+        margin: 20px 0
         font-size: 13px
+        text-align: center
 </style>
