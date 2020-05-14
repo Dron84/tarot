@@ -1,7 +1,7 @@
 <template>
     <footer>
         <div class="grid">
-            <div>на данном сайте представлены калькуляторы
+            <div class="text">на данном сайте представлены калькуляторы
                 <br>для облегчения таронумерологических расчетов
                 <br>по методу "психологический портрет" А. Хшановской.
             </div>
@@ -38,7 +38,10 @@
         font-size: 20px
         color: $second
         background-color: rgba($fore, .9)
-        text-align: center
+        .text
+            text-align: left
+        .social
+            text-align: right
         a
             color: $second
             text-decoration: none
