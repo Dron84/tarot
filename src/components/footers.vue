@@ -32,7 +32,7 @@
 <style lang="sass">
     @import "../sass/vars"
     footer
-        padding: 10px
+        padding: 30px
         width: 100%
         font-family: 'Manrope', sans-serif
         font-size: 20px

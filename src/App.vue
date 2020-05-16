@@ -36,8 +36,6 @@
     -moz-osx-font-smoothing: grayscale
     text-align: center
     color: $fore
-    max-width: 99vw
-    max-height: 99vh
     margin-bottom: 60px
     h1
       margin: 20px 0
