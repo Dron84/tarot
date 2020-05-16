@@ -25,6 +25,13 @@
     padding: 0
     box-sizing: border-box
     font-family: 'Manrope', sans-serif
+    -ms-hyphens: auto
+    -webkit-hyphens: auto
+    hyphens: auto
+    -moz-hyphenate-limit-chars: 6 3 2
+    -webkit-hyphenate-limit-chars: 6 3 2
+    -ms-hyphenate-limit-chars: 6 3 2
+    hyphenate-limit-chars: 6 3 2
 
   html
     background-color: $first

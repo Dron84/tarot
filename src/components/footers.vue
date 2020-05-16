@@ -1,10 +1,7 @@
 <template>
     <footer>
         <div class="grid">
-            <div class="text">на данном сайте представлены калькуляторы
-                <br>для облегчения таронумерологических расчетов
-                <br>по методу "психологический портрет" А. Хшановской.
-            </div>
+            <div class="text">На данном сайте представлены калькуляторы для облегчения таронумерологических расчетов по методу "Психологический портрет" А. Хшановской.</div>
 
 
             <div class="social">
@@ -33,11 +30,15 @@
     @import "../sass/vars"
     footer
         padding: 30px
-        width: 100%
+        width: auto
+        min-width: 320px
         font-family: 'Manrope', sans-serif
         font-size: 20px
         color: $second
         background-color: rgba($fore, .9)
+        .grid
+            display: grid
+            grid-template-columns: repeat(auto-fit, 1fr)
         .text
             text-align: left
         .social
