@@ -32,6 +32,13 @@ const routes = [
         title: 'Парный прогноз на день / месяц / год',
         meta: {title: 'Парный прогноз на день / месяц / год',},
         component: () => import(/* webpackChunkName: "about" */ '../views/ArkanDuble.vue')
+    },
+    {
+        path: '/info',
+        name: 'info',
+        title: 'Значение позиций',
+        meta: {title: 'Значение позиций',},
+        component: () => import(/* webpackChunkName: "about" */ '../views/positionInfo.vue')
     }
 ]
 
