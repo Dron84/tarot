@@ -115,7 +115,6 @@
         }
 
         &__item {
-            font-size: 26px;
             padding-bottom: 15px;
             cursor: pointer;
         }
@@ -124,6 +123,7 @@
             text-decoration: none;
             border-bottom: 2px solid transparent;
             color: $second;
+            font-size: 40px;
             &:hover {
                 color: $second;
                 border-bottom: 2px solid $second;
