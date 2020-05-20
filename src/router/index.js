@@ -36,8 +36,8 @@ const routes = [
     {
         path: '/info',
         name: 'info',
-        title: 'Значение позиций',
-        meta: {title: 'Значение позиций',},
+        title: 'Значения позиций',
+        meta: {title: 'Значения позиций',},
         component: () => import(/* webpackChunkName: "about" */ '../views/positionInfo.vue')
     }
 ]
