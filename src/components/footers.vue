@@ -4,8 +4,8 @@
             <div class="text">данные калькуляторы созданы для облегчения таронумерологических расчетов по методу «психологический портрет» А. Хшановской</div>
 
             <div class="social">
-                <p>Анастасия Воздух консультант метода «психологический портрет» А. Хшановской, таролог, нумеролог</p>
-                <div class="social_title">По всем вопросам:</div>
+                <p class="centered">Анастасия Воздух <br>консультант метода <br>«психологический портрет» А. Хшановской,<br> таролог, нумеролог</p>
+                <div class="social_title" style="margin-top: 20px;">По всем вопросам:</div>
                 <a href="https://www.instagram.com/wowsuperlife/" target="_blank">
                     <img src="img/instagram.svg" alt="instagram logo">
                 </a>
@@ -53,6 +53,8 @@
                     height: 50px
                 &:hover, &:active
                     color: $five
+    .centered
+        text-align: center
     .author
         margin: 10px 0
         font-size: 13px
