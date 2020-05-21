@@ -1,7 +1,7 @@
 <template>
     <div >
     <div class="card" :class="getClasses" @click="show" :style="cardShow">
-        <span class="number">№ {{caption}}</span>
+        <span class="number">{{caption}}</span>
         <!--<img :src="imgsrc" :alt="rim_number">-->
         <span class="rim_number">{{rim_number}}</span>
     </div>

@@ -1,24 +1,24 @@
 <template>
     <div class="maps" :class="mapsClass">
         <div class="line"></div>
-        <card class="ileven" caption="11" :imgsrc="maps.ileven.img" :rim_number="maps.ileven.rim" :showCard="showCard"/>
-        <card class="fiften" caption="15" :imgsrc="maps.fiften.img" :rim_number="maps.fiften.rim" :showCard="showCard"/>
-        <card class="nine" caption="9" :imgsrc="maps.nine.img" :rim_number="maps.nine.rim" :showCard="showCard"/>
-        <card class="ten" caption="10" :imgsrc="maps.ten.img" :rim_number="maps.ten.rim" :showCard="showCard"/>
-        <card class="tvelf" caption="12" :imgsrc="maps.tvelf.img" :rim_number="maps.tvelf.rim" :showCard="showCard"/>
-        <card class="therten" caption="13" :imgsrc="maps.therten.img" :rim_number="maps.therten.rim" :showCard="showCard"/>
-        <card class="foreten" caption="14" :imgsrc="maps.foreten.img" :rim_number="maps.foreten.rim" :showCard="showCard"/>
-        <card class="eten" caption="18" :imgsrc="maps.eten.img" :rim_number="maps.eten.rim" :showCard="showCard"/>
-        <card class="one" caption="1" :imgsrc="maps.one.img" :rim_number="maps.one.rim" :showCard="showCard"/>
-        <card class="two" caption="2" :imgsrc="maps.two.img" :rim_number="maps.two.rim" :showCard="showCard"/>
-        <card class="three" caption="3" :imgsrc="maps.three.img" :rim_number="maps.three.rim" :showCard="showCard"/>
-        <card class="fore" caption="4" :imgsrc="maps.fore.img" :rim_number="maps.fore.rim" :showCard="showCard"/>
-        <card class="five" caption="5" :imgsrc="maps.five.img" :rim_number="maps.five.rim" :showCard="showCard"/>
-        <card class="sixs" caption="6" :imgsrc="maps.sixs.img" :rim_number="maps.sixs.rim" :showCard="showCard"/>
-        <card class="sixten" caption="16" :imgsrc="maps.sixten.img" :rim_number="maps.sixten.rim" :showCard="showCard"/>
-        <card class="seventen" caption="17" :imgsrc="maps.seventen.img" :rim_number="maps.seventen.rim" :showCard="showCard"/>
-        <card class="ethe" caption="8" :imgsrc="maps.ethe.img" :rim_number="maps.ethe.rim" :showCard="showCard"/>
-        <card class="seven" caption="7" :imgsrc="maps.seven.img" :rim_number="maps.seven.rim" :showCard="showCard"/>
+        <card class="ileven" caption="№ 11" :imgsrc="maps.ileven.img" :rim_number="maps.ileven.rim" :showCard="showCard"/>
+        <card class="fiften" caption="№ 15" :imgsrc="maps.fiften.img" :rim_number="maps.fiften.rim" :showCard="showCard"/>
+        <card class="nine" caption="№ 9" :imgsrc="maps.nine.img" :rim_number="maps.nine.rim" :showCard="showCard"/>
+        <card class="ten" caption="№ 10" :imgsrc="maps.ten.img" :rim_number="maps.ten.rim" :showCard="showCard"/>
+        <card class="tvelf" caption="№ 12" :imgsrc="maps.tvelf.img" :rim_number="maps.tvelf.rim" :showCard="showCard"/>
+        <card class="therten" caption="№ 13" :imgsrc="maps.therten.img" :rim_number="maps.therten.rim" :showCard="showCard"/>
+        <card class="foreten" caption="№ 14" :imgsrc="maps.foreten.img" :rim_number="maps.foreten.rim" :showCard="showCard"/>
+        <card class="eten" caption="№ 18" :imgsrc="maps.eten.img" :rim_number="maps.eten.rim" :showCard="showCard"/>
+        <card class="one" caption="№ 1" :imgsrc="maps.one.img" :rim_number="maps.one.rim" :showCard="showCard"/>
+        <card class="two" caption="№ 2" :imgsrc="maps.two.img" :rim_number="maps.two.rim" :showCard="showCard"/>
+        <card class="three" caption="№ 3" :imgsrc="maps.three.img" :rim_number="maps.three.rim" :showCard="showCard"/>
+        <card class="fore" caption="№ 4" :imgsrc="maps.fore.img" :rim_number="maps.fore.rim" :showCard="showCard"/>
+        <card class="five" caption="№ 5" :imgsrc="maps.five.img" :rim_number="maps.five.rim" :showCard="showCard"/>
+        <card class="sixs" caption="№ 6" :imgsrc="maps.sixs.img" :rim_number="maps.sixs.rim" :showCard="showCard"/>
+        <card class="sixten" caption="№ 16" :imgsrc="maps.sixten.img" :rim_number="maps.sixten.rim" :showCard="showCard"/>
+        <card class="seventen" caption="№ 17" :imgsrc="maps.seventen.img" :rim_number="maps.seventen.rim" :showCard="showCard"/>
+        <card class="ethe" caption="№ 8" :imgsrc="maps.ethe.img" :rim_number="maps.ethe.rim" :showCard="showCard"/>
+        <card class="seven" caption="№ 7" :imgsrc="maps.seven.img" :rim_number="maps.seven.rim" :showCard="showCard"/>
         <div class="line2"></div>
         <card class="A" caption="A" :imgsrc="maps.A.img" :rim_number="maps.A.rim" :showCard="showCard"/>
         <card class="B" caption="B" :imgsrc="maps.B.img" :rim_number="maps.B.rim" :showCard="showCard"/>
