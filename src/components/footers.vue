@@ -1,10 +1,10 @@
 <template>
     <footer>
         <div class="grid">
-            <div class="text">Данные калькуляторы созданы для облегчения таронумерологических расчетов по методу «психологический портрет» А. Хшановской</div>
+            <div class="text">данные калькуляторы созданы для облегчения таронумерологических расчетов по методу «психологический портрет» А. Хшановской</div>
 
             <div class="social">
-                <p>Анастасия Воздух. Консультант метода «психологический портрет» А. Хшановской, таролог, нумеролог</p>
+                <p>Анастасия Воздух консультант метода «психологический портрет» А. Хшановской, таролог, нумеролог</p>
                 <div class="social_title">По всем вопросам:</div>
                 <a href="https://www.instagram.com/wowsuperlife/" target="_blank">
                     <img src="img/instagram.svg" alt="instagram logo">
@@ -57,4 +57,9 @@
         margin: 10px 0
         font-size: 13px
         text-align: center
+        a
+            color: $second
+            text-decoration: none
+            &:hover
+                text-decoration: underline
 </style>
