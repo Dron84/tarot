@@ -112,11 +112,14 @@
             list-style: none;
             padding-left: 0;
             margin-top: -50px;
+            width: 100%;
         }
 
         &__item {
             padding-bottom: 15px;
             cursor: pointer;
+            border-bottom: 1px solid $first;
+            width: 100%;
         }
 
         &__link {

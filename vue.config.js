@@ -37,7 +37,7 @@ const option = HighIObfuscationOption
 
 module.exports = {
     configureWebpack: {
-        plugins: [new JavaScriptObfuscator ({rotateUnicodeArray: true})],
+        // plugins: [new JavaScriptObfuscator ({rotateUnicodeArray: true})],
         module: {
             rules: [
                 {
