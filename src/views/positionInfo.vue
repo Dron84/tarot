@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div style="margin-bottom: 40px;">
         <div class="text_container">
             <h2>Описания позиций индивидуального портрета</h2>
             <h3>Базовый портрет</h3>
