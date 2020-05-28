@@ -145,7 +145,7 @@
             </p>
 
         </div>
-        <div class="text_container border">
+        <div class="text_container border" style="margin-top: 30px;">
             <h2 style="font-size: 1.4em">
                 Я рассказала вам об основных, базовых значениях позиций.
                 Обратите внимание, что одна и та же позиция в разных контекстах (темах, вопросах) может трактоваться
