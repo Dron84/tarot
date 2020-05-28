@@ -176,7 +176,7 @@
         h2
             margin: 20px 0
         h3
-            margin: 10px 0
+            margin: 10px 10px
         p
-            margin: 0 10px
+            margin: 0 20px
 </style>
