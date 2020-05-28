@@ -145,17 +145,16 @@
             </p>
 
         </div>
-        <div class="text_container">
-            <h2>Основны</h2>
-            <p style="font-size: 1.4em">
-                Я рассказала вам об основных, базовых значениях позиций. <br>
+        <div class="text_container border">
+            <h3 style="font-size: 1.4em">
+                Я рассказала вам об основных, базовых значениях позиций.
                 Обратите внимание, что одна и та же позиция в разных контекстах (темах, вопросах) может трактоваться
-                по-разному. <br>
+                по-разному.
                 За помощью в расшифровках вы можете обратиться в WhatsApp
                 <a href="whatsapp://send?phone=+79101400642">+79101400642</a>
                 или в Директ Instagram (ник
                 <a href="//www.instagram.com/wowsuperlife/" target="_blank">@wowsuperlife</a>).
-            </p>
+            </h3>
         </div>
     </div>
 
@@ -189,4 +188,7 @@
             color: $fore
             &:hover
                 text-decoration: underline
+    .border
+        border: 1px solid $first
+        border-radius: 7px
 </style>
