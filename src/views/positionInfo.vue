@@ -146,7 +146,7 @@
 
         </div>
         <div class="text_container border">
-            <h3 style="font-size: 1.4em">
+            <h2 style="font-size: 1.4em">
                 Я рассказала вам об основных, базовых значениях позиций.
                 Обратите внимание, что одна и та же позиция в разных контекстах (темах, вопросах) может трактоваться
                 по-разному.
@@ -154,7 +154,7 @@
                 <a href="whatsapp://send?phone=+79101400642">+79101400642</a>
                 или в Директ Instagram (ник
                 <a href="//www.instagram.com/wowsuperlife/" target="_blank">@wowsuperlife</a>).
-            </h3>
+            </h2>
         </div>
     </div>
 
@@ -189,6 +189,6 @@
             &:hover
                 text-decoration: underline
     .border
-        border: 1px solid $first
+        border: 1px solid $five
         border-radius: 7px
 </style>
