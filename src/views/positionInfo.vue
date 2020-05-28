@@ -147,12 +147,12 @@
         </div>
         <div class="text_container">
             <h2>Основны</h2>
-            <p style="font-size: 1.2em">
+            <p style="font-size: 1.4em">
                 Я рассказала вам об основных, базовых значениях позиций. <br>
                 Обратите внимание, что одна и та же позиция в разных контекстах (темах, вопросах) может трактоваться
                 по-разному. <br>
                 За помощью в расшифровках вы можете обратиться в WhatsApp
-                <a href="whatsapp://send?text=+79101400642">+79101400642</a>
+                <a href="whatsapp://send?phone=+79101400642">+79101400642</a>
                 или в Директ Instagram (ник
                 <a href="//www.instagram.com/wowsuperlife/" target="_blank">@wowsuperlife</a>).
             </p>
