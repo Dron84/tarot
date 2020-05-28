@@ -184,4 +184,9 @@
             margin: 10px 10px
         p
             margin: 0 20px
+        a
+            text-decoration: none
+            color: $fore
+            &:hover
+                text-decoration: underline
 </style>
