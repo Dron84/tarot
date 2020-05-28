@@ -175,7 +175,7 @@
         max-width: 1200px
         min-width: 290px
         margin: 0 auto
-        padding: 20px 0
+        padding: 20px
         font-family: "Manrope", sans-serif
         color: $fore
         h2
