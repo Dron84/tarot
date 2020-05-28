@@ -175,10 +175,11 @@
         max-width: 1200px
         min-width: 290px
         margin: 0 auto
+        padding: 20px 0
         font-family: "Manrope", sans-serif
         color: $fore
         h2
-            margin: 20px 0
+            margin: 40px 0
         h3
             margin: 10px 10px
         p
