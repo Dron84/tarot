@@ -145,9 +145,9 @@
             </p>
 
         </div>
-        <div class="text_container scale">
+        <div class="text_container">
             <h2>Основны</h2>
-            <p>
+            <p style="font-size: 1.2em">
                 Я рассказала вам об основных, базовых значениях позиций. <br>
                 Обратите внимание, что одна и та же позиция в разных контекстах (темах, вопросах) может трактоваться
                 по-разному. <br>
@@ -189,6 +189,4 @@
             color: $fore
             &:hover
                 text-decoration: underline
-    .scale
-        transform: scale(1.1)
 </style>
