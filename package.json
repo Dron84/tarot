@@ -12,7 +12,7 @@
     "bd": "vue-cli-service build && node deploy"
   },
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.2",
     "core-js": "^3.6.4",
     "jquery": "^3.5.1",
     "vue": "^2.6.11",
